@@ -4,9 +4,11 @@ import React from "react"
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
+
+import "../src/styles/index.scss"
+
 library.add(fas)
 
-// import "../src/styles/index.scss"
 
 const wrapperStyle:React.CSSProperties = {
   padding:'20px 40px'
@@ -34,6 +36,7 @@ const loaderFn = () => {
   req.keys().forEach(
     name => allExports.push(req(name))
   )
+  return allExports
 }
 
 

@@ -35,10 +35,10 @@ export const Button: FC<ButtonProps> = (props) => {
     ...restProps
   } = props
 
-  const classes = classNames('btn',className,{
-    [`btn-${btnType}`]:btnType,
-    [`btn-${size}`]:size,
-    'disabled':(btnType === 'link') && disabled
+  const classes = classNames('btn', className, {
+    [`btn-${btnType}`]: btnType,
+    [`btn-${size}`]: size,
+    'disabled': (btnType === 'link') && disabled
   })
 
   if(btnType === 'link' && href){
