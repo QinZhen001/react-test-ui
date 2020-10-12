@@ -10,4 +10,7 @@ function useDebounce(value:any, delay= 300){
       clearTimeout(handler)
     }
   },[value,delay])
+  return debounceValue
 }
+
+export default useDebounce
