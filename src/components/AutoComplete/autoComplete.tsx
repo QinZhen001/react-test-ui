@@ -5,14 +5,14 @@ import React, {
   useState,
   useRef,
   ChangeEvent,
+  useEffect,
 } from "react";
 import classNames from "classnames";
 import Input, { InputProps } from "../Input/input";
 import Icon from "../Icon/icon";
 import Transition from "../Transition/transition";
-import useDebounce from '../../hooks/useDebounce'
-import useClickOutside from '../../hooks/useClickOutside'
-import { useEffect } from "@storybook/addons";
+import useDebounce from "../../hooks/useDebounce";
+import useClickOutside from "../../hooks/useClickOutside";
 
 interface DataSourceObject {
   value: string;
@@ -43,38 +43,38 @@ export const AutoComplete: FC<AutoCompleteProps> = (props) => {
   const [highlightIndex, setHighlightIndex] = useState(-1);
   const triggerSearch = useRef(false);
   const componentRef = useRef<HTMLDivElement>(null);
-  const debouncedValue = useDebounce(inputValue,300)
+  const debouncedValue = useDebounce(inputValue, 300);
 
   // 点击组件外部 清空下拉选项
-  useClickOutside(componentRef, ()=>{
-    setSuggestions([])
-  })
+  useClickOutside(componentRef, () => {
+    setShowDropdown(false);
+    setSuggestions([]);
+  });
 
-
-  useEffect(()=>{
-    if(debouncedValue && triggerSearch.current){
-      setSuggestions([])
-      const results = fetchSuggestions(debouncedValue)
-      if(results instanceof Promise){
-        setLoading(true)
-        results.then(data => {
-          setLoading(false)
-          setSuggestions(data)
-          if(data.length > 0){
-            setShowDropdown(true)
+  useEffect(() => {
+    if (debouncedValue && triggerSearch.current) {
+      setSuggestions([]);
+      const results = fetchSuggestions(debouncedValue);
+      if (results instanceof Promise) {
+        setLoading(true);
+        results.then((data) => {
+          setLoading(false);
+          setSuggestions(data);
+          if (data.length > 0) {
+            setShowDropdown(true);
           }
-        })
-      }else{
-        setSuggestions(results)
+        });
+      } else {
+        setSuggestions(results);
         if (results.length > 0) {
-          setShowDropdown(true)
-        } 
+          setShowDropdown(true);
+        }
       }
-    }else{
-      setShowDropdown(false)
+    } else {
+      setShowDropdown(false);
     }
-    setHighlightIndex(-1)
-  },[debouncedValue,fetchSuggestions])
+    setHighlightIndex(-1);
+  }, [debouncedValue, fetchSuggestions]);
 
   const highlight = (index: number) => {
     if (index < 0) {
@@ -106,7 +106,7 @@ export const AutoComplete: FC<AutoCompleteProps> = (props) => {
         highlight(highlightIndex + 1);
         break;
       case 27:
-        setShowDropdown(false)
+        setShowDropdown(false);
         break;
       default:
         break;
