@@ -1,7 +1,7 @@
-import React, { FC, CSSProperties, createContext } from "react";
+import React, { FC, CSSProperties, createContext,useState } from "react";
 import classNames from "classnames";
-import { useState } from "@storybook/addons";
-import { IgnorePlugin } from "webpack";
+import {MenuItemProps} from './menuItem'
+
 
 type MenuMode = "horizontal" | "vertical";
 
@@ -57,8 +57,8 @@ export const Menu: FC<MenuProps> = (props) => {
 
   const renderChildren = () =>{
     return React.Children.map(children,(child,index)=>{
-      const childElement = child
-      // const {dis}
+      const childElement = child as React.FunctionComponentElement<MenuItemProps>
+      const {displayName} = childElement.type
     })
   }
 
