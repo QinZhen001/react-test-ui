@@ -1,7 +1,6 @@
-import React, { FC, CSSProperties, createContext,useState } from "react";
+import React, { FC, CSSProperties, createContext, useState } from "react";
 import classNames from "classnames";
-import {MenuItemProps} from './menuItem'
-
+import { MenuItemProps } from "./menuItem";
 
 type MenuMode = "horizontal" | "vertical";
 
@@ -41,10 +40,10 @@ export const Menu: FC<MenuProps> = (props) => {
     "menu-horizontal": mode !== "vertical",
   });
 
-  const handleClick = (index:string) => {
-    setActive(index)
-    if(onSelect){
-      onSelect(index)
+  const handleClick = (index: string) => {
+    setActive(index);
+    if (onSelect) {
+      onSelect(index);
     }
   };
 
@@ -55,12 +54,24 @@ export const Menu: FC<MenuProps> = (props) => {
     defaultOpenSubMenus,
   };
 
-  const renderChildren = () =>{
-    return React.Children.map(children,(child,index)=>{
-      const childElement = child as React.FunctionComponentElement<MenuItemProps>
-      const {displayName} = childElement.type
-    })
-  }
+  const renderChildren = () => {
+    return React.Children.map(children, (child, index) => {
+      const childElement = child as React.FunctionComponentElement<
+        MenuItemProps
+      >;
+      // TODO:displayName
+      const { displayName } = childElement.type;
+      if (displayName === "MenuItem" || displayName === "SubMenu") {
+        // auto set index
+        return React.cloneElement(childElement,{
+          index:index.toString()
+        })
+      }else{
+        // children 只支持 MenuItem 或  SubMenu
+        console.error('Warning: Menu has a child which is not a MenuItem components')
+      }
+    });
+  };
 
   return (
     <ul className={classes} style={style} data-testid="test-menu">
@@ -76,3 +87,7 @@ Menu.defaultProps = {
   mode: "horizontal",
   defaultOpenSubMenus: [],
 };
+
+
+
+export default Menu

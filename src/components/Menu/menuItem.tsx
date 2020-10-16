@@ -9,14 +9,14 @@ export interface MenuItemProps {
   style?: CSSProperties;
 }
 
-const MenuItem: FC<MenuItemProps> = (props) => {
+export const MenuItem: FC<MenuItemProps> = (props) => {
   const { index, disabled, children, className, style } = props;
 
   const context = useContext(MenuContext);
 
   const classes = classNames("menu-item", className, {
     "is-disabled": disabled,
-    "is-active": context,
+    "is-active": context.index === index,
   });
 
   const handleClick = (e: MouseEvent) => {
@@ -31,3 +31,6 @@ const MenuItem: FC<MenuItemProps> = (props) => {
     </li>
   );
 };
+
+MenuItem.displayName = 'MenuItem'
+export default MenuItem

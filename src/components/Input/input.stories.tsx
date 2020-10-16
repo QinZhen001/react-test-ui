@@ -1,33 +1,16 @@
-import React, { useState, ChangeEvent } from "react";
+import React, { useState, ChangeEvent, Fragment } from "react";
 import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 import { Input } from "./input";
 
-const ControlledInput = () => {
-  const [value, setValue] = useState<string>('');
-  const handleChange = (e:ChangeEvent<HTMLInputElement>) => {
-    console.log('handleChange')
-    setValue(e.target.value);
-  }
 
-  return (
-    <Input
-      value={value}
-      defaultValue={value}
-      onChange={handleChange}
-    ></Input>
-  );
-};
 
 const defaultInput = () => (
-  <>
     <Input
       style={{ width: "300px" }}
       placeholder="placeholder"
       onChange={action("changed")}
     />
-    <ControlledInput />
-  </>
 );
 
 const disabledInput = () => (
