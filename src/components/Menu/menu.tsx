@@ -59,7 +59,6 @@ export const Menu: FC<MenuProps> = (props) => {
       const childElement = child as React.FunctionComponentElement<
         MenuItemProps
       >;
-      // TODO:displayName
       const { displayName } = childElement.type;
       if (displayName === "MenuItem" || displayName === "SubMenu") {
         // auto set index
