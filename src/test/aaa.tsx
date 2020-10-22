@@ -1,3 +1,6 @@
+import { createContext } from "react"
+import { types } from "@storybook/addons"
+
 class Plugin{
   aaa:string
   constructor(aaa:string = ''){
@@ -26,4 +29,23 @@ let arr:T = [
 ]
 console.log(arr[1])
 
-export {}
+
+
+
+
+class Test {
+  constructor(){
+
+  }
+
+
+
+}
+class A {
+  public static attribute = "ABC";
+}
+
+function f(Param: typeof  A) {
+  Param.attribute;
+   new Param();
+}
