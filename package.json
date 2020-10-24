@@ -13,7 +13,7 @@
     "test": "node scripts/test.js",
     "test:nowatch": "cross-env CI=true && npm run test",
     "build-ts": "tsc -p tsconfig.build.json",
-    "build-css":"node-sass ./src/styles/index.scss ./dist/index.css",
+    "build-css": "node-sass ./src/styles/index.scss ./dist/index.css",
     "build": "npm run clean && npm run build-ts && npm run build-css",
     "lint": "eslint --ext js,ts,tsx src --max-warnings 5",
     "prepublishOnly": "npm run test:nowatch && npm run lint && npm run build"
