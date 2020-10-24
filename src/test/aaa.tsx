@@ -29,23 +29,3 @@ let arr:T = [
 ]
 console.log(arr[1])
 
-
-
-
-
-class Test {
-  constructor(){
-
-  }
-
-
-
-}
-class A {
-  public static attribute = "ABC";
-}
-
-function f(Param: typeof  A) {
-  Param.attribute;
-   new Param();
-}
