@@ -6,9 +6,16 @@ import {
   AutoCompleteProps,
   DataSourceType,
 } from "./autoComplete";
+import axios from 'axios'
+
 
 // https://reactcommunity.org/react-transition-group/testing
 config.disabled = true;
+
+jest.mock('axios')
+// mock axios 之后 有代码提示
+const mockedAxios = axios as jest.Mocked<typeof axios>
+
 
 interface ItemProps {
   value: string;
@@ -42,6 +49,7 @@ const testRenderOption = (item: DataSourceType) => {
 
 let wrapper: RenderResult;
 let inputNode: HTMLInputElement;
+
 
 describe("test AutoComplete component", () => {
   beforeEach(() => {
@@ -128,7 +136,21 @@ describe("test AutoComplete component", () => {
     // 下拉 name 项消失
     expect(wrapper.container.querySelector(".render-item-name")).not.toBeInTheDocument()
   });
-  it('async fetchSuggestions should works fine',()=>{
-    
+  it('async fetchSuggestions should works fine',async ()=>{
+    mockedAxios.post.mockImplementation((value)=>{
+      return Promise.resolve(testArray.filter(item=> item.value.includes(value)))
+    })
+    fireEvent.change(inputNode, { target: { value: "a" } });
+    await wait(() => {
+      expect(
+        wrapper.container.querySelectorAll(".suggestion-item").length
+      ).toEqual(2);
+    });
+    fireEvent.change(inputNode, { target: { value: "abc" } });
+    await wait(() => {
+      expect(
+        wrapper.container.querySelectorAll(".suggestion-item").length
+      ).toEqual(1);
+    });
   })
 });
