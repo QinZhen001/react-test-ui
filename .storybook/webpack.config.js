@@ -1,32 +1,35 @@
-module.exports = ({config}) => {
+module.exports = ({ config }) => {
   config.module.rules.push({
-    test:/\.tsx?$/,
-    use:[
+    test: /\.tsx?$/,
+    use: [
       {
-        loader:require.resolve('babel-loader'),
-        options:{
-          presets:[
-            require.resolve("babel-preset-react-app")
-          ]
-        }
+        loader: require.resolve('babel-loader'),
+        options: {
+          presets: [require.resolve('babel-preset-react-app')],
+        },
       },
       {
-        loader:require.resolve('react-docgen-typescript-loader'),
-        options:{
-          shouldExtractLiteralValuesFromEnum:true,
+        loader: require.resolve('react-docgen-typescript-loader'),
+        options: {
+          shouldExtractLiteralValuesFromEnum: true,
           propFilter: (prop) => {
             if (prop.parent) {
               return !prop.parent.fileName.includes('node_modules')
             }
-            return true            
-          }
-        }
-      }
-    ]
+            return true
+          },
+        },
+      },
+    ],
   })
+  config.resolve.extensions.push('.ts', '.tsx', '.scss', '.css')
 
-
-  config.resolve.extensions.push('.ts','.tsx')
+  // TODO:record this
+  // 处理引入scss的问题
+  config.module.rules.push({
+    test: /\.(sa|sc)ss$/,
+    use: ['style-loader', 'css-loader', 'sass-loader'],
+  })
 
   return config
 }

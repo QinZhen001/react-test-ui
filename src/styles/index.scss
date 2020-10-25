@@ -1,33 +1,33 @@
 // config
-@import "./variables.scss";
+@import 'variables';
 
 //layout
-@import "./reboot.scss";
+@import 'reboot';
 
 //mixin
-@import "./mixin.scss";
+@import 'mixin';
 
 // animation
-@import "./animation.scss";
-
-
+@import 'animation';
 // button
-@import "../components/Button/style.scss";
+
+@import '../components/Button/style';
 
 // menu
-@import "../components/Menu/style.scss";
+
+@import '../components/Menu/style';
 
 // icon
-@import "../components/Icon/style.scss";
+@import '../components/Icon/style';
 
 //input
-@import "../components/Input/style.scss";
+@import '../components/Input/style';
 
 //auto-complete
-@import "../components/AutoComplete/style.scss";
+@import '../components/AutoComplete/style';
 
 //upload
-@import "../components/Upload/style.scss";
+@import '../components/Upload/style';
 
 //progress
-@import "../components/Progress/style.scss";
+@import '../components/Progress/style';
