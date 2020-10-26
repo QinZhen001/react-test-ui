@@ -9,7 +9,7 @@
     "clean": "rimraf ./dist",
     "start": "node scripts/start.js",
     "storybook": "start-storybook -p 9009 -s public",
-    "build-storybook": "build-storybook -s public -o docs",
+    "build-storybook": "build-storybook -s public",
     "test": "node scripts/test.js",
     "test:nowatch": "cross-env CI=true && npm run test",
     "build-ts": "tsc -p tsconfig.build.json",
