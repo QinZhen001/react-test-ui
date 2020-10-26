@@ -24,7 +24,6 @@ module.exports = ({ config }) => {
   })
   config.resolve.extensions.push('.ts', '.tsx', '.scss', '.css')
 
-  // TODO:record this
   // 处理引入scss的问题
   config.module.rules.push({
     test: /\.(sa|sc)ss$/,
