@@ -20,13 +20,13 @@ module.exports = {
     reactDocgen: "react-docgen-typescript",
   },
   webpackFinal: async (config) => {
-    config.module.rules.push({
-      test: /\.(ts|tsx)$/,
-      loader: require.resolve("babel-loader"),
-      // options: {
-      //   babelrc: true,
-      // },
-    });
+    // config.module.rules.push({
+    //   test: /\.(ts|tsx)$/,
+    //   loader: require.resolve("babel-loader"),
+    //   // options: {
+    //   //   babelrc: true,
+    //   // },
+    // });
     // config.module.rules.push({
     //   test: /\.css$/,
     //   use: [

@@ -1,19 +1,15 @@
-{
-  "presets": [
-    [
-      "@babel/preset-env"
-    ],
-    [
-      "@babel/preset-react"
-    ],
+const presets = [
+    ["@babel/preset-env"],
+    ["@babel/preset-react"],
     [
       "@babel/preset-typescript",
       {
-        "allowDeclareFields": true
-      }
-    ]
-  ],
-  "plugins": [
+        allowDeclareFields: true,
+      },
+    ],
+  ];
+  
+  const plugins = [
     "@babel/plugin-transform-runtime",
     "@babel/plugin-proposal-object-rest-spread",
     "@babel/plugin-proposal-optional-chaining",
@@ -21,9 +17,14 @@
     [
       "@babel/plugin-proposal-decorators",
       {
-        "legacy": true
-      }
+        legacy: true,
+      },
     ],
-    "@babel/plugin-proposal-class-properties"
-  ]
-}
+    "@babel/plugin-proposal-class-properties",
+  ];
+  
+  
+   module.exports = {
+      presets,
+      plugins
+   }

@@ -9,12 +9,14 @@
     "clean": "rimraf ./dist",
     "storybook": "start-storybook -p 6006",
     "build:storybook": "build-storybook -o dist",
-    "build:ts": "tsc -p tsconfig.build.json",
-    "build": "npm run build:storybook"
+    "build": "npm run build:storybook",
+    "pack:ts": "tsc -p tsconfig.json"
   },
   "dependencies": {
     "@babel/runtime": "7.13.17",
-    "classnames": "2.2.6"
+    "classnames": "2.2.6",
+    "react-datepicker": "3.6.0",
+    "dayjs": "1.10.4"
   },
   "devDependencies": {
     "@babel/core": "^7.16.12",
@@ -43,6 +45,8 @@
     "rimraf": "^3.0.1",
     "@types/react": "^16.8.6",
     "@types/react-dom": "^16.8.6",
+    "@types/classnames": "2.2.11",
+    "@types/react-datepicker": "3.1.8",
     "react": "16.8.4",
     "react-dom": "16.8.4",
     "tailwindcss": "2.0.3",
@@ -51,7 +55,9 @@
     "webpack": "^5.54.0",
     "webpack-cli": "4.10.0",
     "webpackbar": "5.0.0-3",
-    "webpack-bundle-analyzer":"^4.6.1"
+    "webpack-bundle-analyzer":"^4.6.1",
+    "postcss": "^8.4.14",
+    "postcss-loader": "^4.0.3"
   },
   "peerDependencies": {
     "react": ">=16.8.0",
