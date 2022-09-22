@@ -7,26 +7,14 @@ const fs = require("fs");
 
 const { presets, plugins } = require("./babel/es");
 const baseConfig = require("./webpack.base");
-const { ROOT_PATH, SRC_PATH } = require("./utils/index");
-
-const getEntry = () => {
-  const result = {};
-  const componentsPath = path.resolve(SRC_PATH, "./components");
-  const res = fs.readdirSync(componentsPath);
-  res.forEach((item) => {
-    result[item] = path.resolve(componentsPath, item, "./index.tsx");
-  });
-  console.log(Object.keys(result).length + " components packing!")
-  console.log(result);
-  return result;
-};
+const { ROOT_PATH, SRC_PATH, getEntry } = require("./utils/index");
 
 const config = {
   mode: "production",
   entry: getEntry(),
   externals: {
-    react: 'react',
-    'react-dom': 'react-dom',
+    react: "react",
+    "react-dom": "react-dom",
   },
   externalsType: "module",
   output: {

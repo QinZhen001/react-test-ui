@@ -7,27 +7,7 @@ const webpack = require("webpack");
 
 const { plugins, presets } = require("./babel/umd");
 const baseConfig = require("./webpack.base");
-const { ROOT_PATH, SRC_PATH } = require("./utils/index");
-
-// const entry = path.resolve(SRC_PATH, "./index.tsx");
-// const packageJson = require("../package.json");
-// const { name } = packageJson;
-
-const IGNORE_PATH = ["index.tsx","react-app-env.d.ts"];
-
-const getEntry = () => {
-  const result = {};
-  const componentsPath = path.resolve(SRC_PATH, "./components");
-  const res = fs.readdirSync(componentsPath);
-  res.forEach((item) => {
-    if (!IGNORE_PATH.includes(item)) {
-      result[item] = path.resolve(componentsPath, item, "./index.tsx");
-    }
-  });
-  console.log(Object.keys(result).length + " components packing!");
-  console.log(result);
-  return result;
-};
+const { ROOT_PATH, SRC_PATH, getEntry } = require("./utils/index");
 
 const config = {
   mode: "production",

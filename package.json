@@ -1,6 +1,6 @@
 {
-  "name": "react-test-ui",
-  "version": "1.0.0",
+  "name": "test-aaa-ui-kit",
+  "version": "0.0.6",
   "description": "",
   "main": "dist/index.js",
   "module": "dist/index.js",
