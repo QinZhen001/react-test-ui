@@ -1,19 +1,22 @@
-import React from "react";
-import { Meta } from "@storybook/react";
-import { Icon } from "./index";
+import React from 'react';
+import { Meta } from '@storybook/react';
+import { Icon } from './index';
 
 const meta: Meta = {
-  title: "Components/Icon",
+  title: 'Components/Icon',
   component: Icon,
 };
 
-type DocsProps = {};
+// type DocsProps = {};
 
-export const Docs = ({}: DocsProps) => (
+export const Docs = () => (
   <>
     <div>
-      <i className="el-icon-delete" style={{ fontSize: "30px", color: "red" }}></i>
-      <Icon name="delete" style={{ fontSize: "20", color: "red" }}></Icon>
+      <i
+        className="el-icon-delete"
+        style={{ fontSize: '30px', color: 'red' }}
+      ></i>
+      <Icon name="delete" style={{ fontSize: '20', color: 'red' }}></Icon>
     </div>
   </>
 );

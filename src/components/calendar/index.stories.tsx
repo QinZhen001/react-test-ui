@@ -9,7 +9,7 @@ const meta: Meta = {
 
 type DocsProps = {};
 
-export const Docs = ({}: DocsProps) => (
+export const Docs = () => (
   <>
     <div>
       <Calendar></Calendar>

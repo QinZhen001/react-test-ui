@@ -6,14 +6,14 @@ import React, {
   useState,
   useRef,
   useEffect,
-} from "react";
-import classnames from "classnames";
-import { BaseProps } from "../../type/index";
-import RcDatePicker from "react-datepicker";
-import dayjs from "dayjs";
+} from 'react';
+import classnames from 'classnames';
+import { BaseProps } from '../../type/index';
+import RcDatePicker from 'react-datepicker';
+import dayjs from 'dayjs';
 // import { SvgImg } from "../../components";
-import "react-datepicker/dist/react-datepicker.min.css";
-import "./index.css";
+import 'react-datepicker/dist/react-datepicker.min.css';
+import './index.css';
 
 export interface CalendarProps extends BaseProps {
   className?: string;
@@ -30,13 +30,13 @@ export const Calendar: FC<CalendarProps> = ({
   ...restProps
 }) => {
   const calendarcls = classnames({
-    ["ag-calendar"]: 1,
+    'ag-calendar': 1,
   });
   const cls = classnames({
     [`${className}`]: !!className,
-    ["ag-calendar-container"]: 1,
+    'ag-calendar-container': 1,
   });
-  let today = new Date();
+  const today = new Date();
   const [startDate, setStartDate] = useState(date || today);
   const [selectedMonth, setSelectedMonth] = useState(dayjs().month());
   const [selectedHour, setSelectedHour] = useState(dayjs(today).hour());
@@ -44,20 +44,24 @@ export const Calendar: FC<CalendarProps> = ({
   const hourRef = useRef<HTMLButtonElement | null>(null);
   const minuteRef = useRef<HTMLButtonElement | null>(null);
 
-  const onSelectHour = (evt: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    let hour = Number(evt.currentTarget.dataset.hour || "1");
+  const onSelectHour = (
+    evt: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    const hour = Number(evt.currentTarget.dataset.hour || '1');
     setSelectedHour(hour);
     onChange && onChange(constructResult(startDate, hour, selectedMinute));
   };
 
-  const onSelectMinute = (evt: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    let minute = Number(evt.currentTarget.dataset.minute || "0");
+  const onSelectMinute = (
+    evt: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    const minute = Number(evt.currentTarget.dataset.minute || '0');
     setSelectedMinute(minute);
     onChange && onChange(constructResult(startDate, selectedHour, minute));
   };
 
   const constructResult = (date: Date, hour: number, minute: number) => {
-    let d = dayjs(date);
+    const d = dayjs(date);
     return new Date(d.year(), d.month(), d.date(), hour, minute);
   };
 
@@ -72,10 +76,11 @@ export const Calendar: FC<CalendarProps> = ({
       <RcDatePicker
         selected={startDate}
         onChange={(date) => {
-          let d: Date = date as Date;
+          const d: Date = date as Date;
           setSelectedMonth(dayjs(d).month());
           setStartDate(d);
-          onChange && onChange(constructResult(d, selectedHour, selectedMinute));
+          onChange &&
+            onChange(constructResult(d, selectedHour, selectedMinute));
         }}
         onMonthChange={(date: Date) => setSelectedMonth(dayjs(date).month())}
         // showTimeSelect
@@ -91,7 +96,7 @@ export const Calendar: FC<CalendarProps> = ({
           nextMonthButtonDisabled,
         }) => (
           <div className="ag-calendar-header">
-            {dayjs(date).format("YYYY年MM月")}
+            {dayjs(date).format('YYYY年MM月')}
             <div className="ag-calendar-header-btn-groups">
               {/* <SvgImg className="rotated" type="backward" onClick={() => decreaseMonth()} />
               <SvgImg className="rotated" type="forward" onClick={() => increaseMonth()} /> */}
@@ -99,19 +104,23 @@ export const Calendar: FC<CalendarProps> = ({
           </div>
         )}
         renderDayContents={(dayOfMonth: number, date?: Date) => {
-          let classes = ["ag-calendar-date"];
-          let d = dayjs(date);
-          let today = dayjs();
+          const classes = ['ag-calendar-date'];
+          const d = dayjs(date);
+          const today = dayjs();
 
           const equalDate = (d1: dayjs.Dayjs, d2: dayjs.Dayjs) => {
-            return d1.date() === d2.date() && d1.month() === d2.month() && d1.year() === d2.year();
+            return (
+              d1.date() === d2.date() &&
+              d1.month() === d2.month() &&
+              d1.year() === d2.year()
+            );
           };
 
-          d.month() !== selectedMonth && classes.push("out-scoped");
-          equalDate(d, dayjs(startDate)) && classes.push("selected");
-          equalDate(d, today) && classes.push("today");
+          d.month() !== selectedMonth && classes.push('out-scoped');
+          equalDate(d, dayjs(startDate)) && classes.push('selected');
+          equalDate(d, today) && classes.push('today');
 
-          return <div className={classes.join(" ")}>{dayOfMonth}</div>;
+          return <div className={classes.join(' ')}>{dayOfMonth}</div>;
         }}
         // customTimeInput={<ExampleCustomTimeInput></ExampleCustomTimeInput>}
       />
@@ -122,10 +131,10 @@ export const Calendar: FC<CalendarProps> = ({
               <button
                 data-hour={idx}
                 ref={selectedHour === idx ? hourRef : null}
-                className={selectedHour === idx ? "selected w-full" : "w-full"}
+                className={selectedHour === idx ? 'selected w-full' : 'w-full'}
                 onClick={onSelectHour}
               >
-                {`${idx}`.padStart(2, "0")}
+                {`${idx}`.padStart(2, '0')}
               </button>
             </li>
           ))}
@@ -136,10 +145,12 @@ export const Calendar: FC<CalendarProps> = ({
               <button
                 data-minute={idx}
                 ref={selectedMinute === idx ? minuteRef : null}
-                className={selectedMinute === idx ? "selected w-full" : "w-full"}
+                className={
+                  selectedMinute === idx ? 'selected w-full' : 'w-full'
+                }
                 onClick={onSelectMinute}
               >
-                {`${idx}`.padStart(2, "0")}
+                {`${idx}`.padStart(2, '0')}
               </button>
             </li>
           ))}
@@ -149,5 +160,4 @@ export const Calendar: FC<CalendarProps> = ({
   );
 };
 
-
-export default Calendar
+export default Calendar;

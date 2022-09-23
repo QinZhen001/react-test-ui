@@ -1,15 +1,17 @@
-import React from "react";
-import { Meta } from "@storybook/react";
+import React from 'react';
+import { Meta } from '@storybook/react';
 
-const Button = ({children}) => {
-  return <button>Button
-    {children}
-  </button>;
+const Button = ({ children }) => {
+  return (
+    <button>
+      Button
+      {children}
+    </button>
+  );
 };
 
-
 const meta: Meta = {
-  title: "Components/Button",
+  title: 'Components/Button',
   component: Button,
 };
 

@@ -1,0 +1,7 @@
+node_modules
+dist
+build
+assets
+out
+lib
+plugin

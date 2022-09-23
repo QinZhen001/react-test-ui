@@ -5,18 +5,28 @@
   "main": "dist/index.js",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
+  "sideEffects": [
+    "**/*.css"
+  ],
   "scripts": {
     "clean": "rimraf ./dist",
     "storybook": "start-storybook -p 6006",
-    "build:storybook": "build-storybook -o dist",
     "build": "npm run build:storybook",
-    "pack:ts": "tsc -p tsconfig.json"
+    "build:storybook": "build-storybook -o dist",
+    "build:cjs": "webpack --config ./webpack/webpack.cjs.js",
+    "build:es": "webpack --config ./webpack/webpack.es.js",
+    "pack": "",
+    "copy:es": "cp -f ./src/components/index.tsx ./es/index.js",
+    "copy:cjs": "cp -f ./src/components/index.tsx ./lib/index.js",
+    "pack:ts": "tsc -p tsconfig.json",
+    "pack:es": "run-s build:es copy:es",
+    "pack:cjs": "run-s build:cjs copy:cjs"
   },
   "dependencies": {
     "@babel/runtime": "7.13.17",
     "classnames": "2.2.6",
-    "react-datepicker": "3.6.0",
-    "dayjs": "1.10.4"
+    "dayjs": "1.10.4",
+    "react-datepicker": "3.6.0"
   },
   "devDependencies": {
     "@babel/core": "^7.16.12",
@@ -42,26 +52,51 @@
     "@storybook/builder-webpack5": "^6.4.22",
     "@storybook/manager-webpack5": "^6.4.22",
     "@storybook/react": "^6.4.22",
-    "rimraf": "^3.0.1",
-    "@types/react": "^16.8.6",
-    "@types/react-dom": "^16.8.6",
     "@types/classnames": "2.2.11",
+    "@types/react": "^16.8.6",
     "@types/react-datepicker": "3.1.8",
+    "@types/react-dom": "^16.8.6",
+    "@typescript-eslint/eslint-plugin": "^5.31.0",
+    "@typescript-eslint/parser": "^5.31.0",
+    "css-minimizer-webpack-plugin": "3.0.2",
+    "eslint": "^8.20.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-n": "^15.3.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-promise": "^6.0.1",
+    "eslint-plugin-react": "^7.30.1",
+    "lint-staged": "^13.0.3",
+    "npm-run-all": "4.1.5",
+    "postcss": "^8.4.14",
+    "postcss-loader": "^4.0.3",
+    "prettier": "^2.7.1",
     "react": "16.8.4",
     "react-dom": "16.8.4",
+    "rimraf": "^3.0.1",
     "tailwindcss": "2.0.3",
     "thread-loader": "3.0.4",
+    "typescript": "4.5.2",
     "url-loader": "4.1.1",
     "webpack": "^5.54.0",
+    "webpack-bundle-analyzer": "^4.6.1",
     "webpack-cli": "4.10.0",
     "webpackbar": "5.0.0-3",
-    "webpack-bundle-analyzer":"^4.6.1",
-    "postcss": "^8.4.14",
-    "postcss-loader": "^4.0.3"
+    "yorkie": "^2.0.0"
   },
   "peerDependencies": {
     "react": ">=16.8.0",
     "react-dom": ">=16.8.0"
+  },
+  "gitHooks": {
+    "pre-commit": "lint-staged"
+  },
+  "lint-staged": {
+    "**/*.{ts,tsx}": [
+      "eslint '**/*.{ts,tsx}' --fix",
+      "git add"
+    ]
   },
   "browserslist": {
     "production": [
