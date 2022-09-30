@@ -12,15 +12,18 @@ const { ROOT_PATH, SRC_PATH, getEntry } = require('./utils/index');
 const config = {
   mode: 'production',
   entry: getEntry(),
+  externalsType: 'module',
   externals: {
     react: 'react',
     'react-dom': 'react-dom',
   },
-  externalsType: 'module',
   output: {
-    filename: './components/[name]/index.js',
+    filename: './[name]/index.js',
     library: {
       type: 'module',
+    },
+    environment: {
+      module: true,
     },
     libraryTarget: 'module',
     path: path.resolve(ROOT_PATH, 'es'),

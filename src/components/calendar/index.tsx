@@ -1,17 +1,8 @@
-import React, {
-  EventHandler,
-  FC,
-  forwardRef,
-  SyntheticEvent,
-  useState,
-  useRef,
-  useEffect,
-} from 'react';
+import { FC, useState, useRef, useEffect } from 'react';
 import classnames from 'classnames';
 import { BaseProps } from '../../type/index';
 import RcDatePicker from 'react-datepicker';
 import dayjs from 'dayjs';
-// import { SvgImg } from "../../components";
 import 'react-datepicker/dist/react-datepicker.min.css';
 import './index.css';
 

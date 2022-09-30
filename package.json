@@ -1,21 +1,21 @@
 {
   "name": "test-aaa-ui-kit",
-  "version": "0.0.6",
+  "version": "0.1.0",
   "description": "",
-  "main": "dist/index.js",
-  "module": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "types": "lib/components/index.d.ts",
   "sideEffects": [
     "**/*.css"
   ],
   "scripts": {
-    "clean": "rimraf ./dist",
+    "clean": "rimraf ./dist ./lib ./es",
     "storybook": "start-storybook -p 6006",
     "build": "npm run build:storybook",
     "build:storybook": "build-storybook -o dist",
     "build:cjs": "webpack --config ./webpack/webpack.cjs.js",
     "build:es": "webpack --config ./webpack/webpack.es.js",
-    "pack": "",
+    "pack": "run-s clean pack:es pack:cjs pack:ts",
     "copy:es": "cp -f ./src/components/index.tsx ./es/index.js",
     "copy:cjs": "cp -f ./src/components/index.tsx ./lib/index.js",
     "pack:ts": "tsc -p tsconfig.json",
@@ -53,9 +53,9 @@
     "@storybook/manager-webpack5": "^6.4.22",
     "@storybook/react": "^6.4.22",
     "@types/classnames": "2.2.11",
-    "@types/react": "^16.8.6",
+    "@types/react": "^17.0.0",
     "@types/react-datepicker": "3.1.8",
-    "@types/react-dom": "^16.8.6",
+    "@types/react-dom": "^17.0.0",
     "@typescript-eslint/eslint-plugin": "^5.31.0",
     "@typescript-eslint/parser": "^5.31.0",
     "css-minimizer-webpack-plugin": "3.0.2",
@@ -72,8 +72,8 @@
     "postcss": "^8.4.14",
     "postcss-loader": "^4.0.3",
     "prettier": "^2.7.1",
-    "react": "16.8.4",
-    "react-dom": "16.8.4",
+    "react": "^17.0.0",
+    "react-dom": "^17.0.0",
     "rimraf": "^3.0.1",
     "tailwindcss": "2.0.3",
     "thread-loader": "3.0.4",
@@ -86,8 +86,8 @@
     "yorkie": "^2.0.0"
   },
   "peerDependencies": {
-    "react": ">=16.8.0",
-    "react-dom": ">=16.8.0"
+    "react": ">=17.0.0",
+    "react-dom": ">=17.0.0"
   },
   "gitHooks": {
     "pre-commit": "lint-staged"
