@@ -1,6 +1,6 @@
 {
   "name": "test-aaa-ui-kit",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "",
   "main": "lib/index.umd.js",
   "module": "lib/index.mjs",
@@ -80,7 +80,8 @@
     "yorkie": "^2.0.0",
     "@vitejs/plugin-react": "^1.0.5",
     "vite": "^3.1.6",
-    "vite-plugin-css-injected-by-js": "2.1.0"
+    "vite-plugin-css-injected-by-js": "2.1.0",
+    "rollup-plugin-visualizer": "^5.8.2"
   },
   "peerDependencies": {
     "react": ">=17.0.0",
