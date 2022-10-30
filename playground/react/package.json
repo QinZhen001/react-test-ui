@@ -1,0 +1,24 @@
+{
+  "name": "test-react",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "test-aaa-ui-kit": "0.1.2-rc.4"
+  },
+  "devDependencies": {
+    "vite": "^2.7.6",
+    "@vitejs/plugin-react": "^1.0.0"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ]
+  }
+}

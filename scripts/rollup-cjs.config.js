@@ -1,4 +1,4 @@
-const { nodeResolve } = require('@rollup/plugin-node-resolve');
+const resolve = require('@rollup/plugin-node-resolve');
 const commonjs = require('@rollup/plugin-commonjs');
 const typescript = require('@rollup/plugin-typescript');
 const postcss = require('rollup-plugin-postcss');
@@ -13,7 +13,7 @@ const configs = Object.keys(inputs).map((key) => ({
     file: `lib/${key}.js`,
     format: 'cjs',
   },
-  plugins: [typescript(), postcss(), nodeResolve(), commonjs()],
+  plugins: [typescript(), postcss(), resolve(), commonjs()],
   external: ['react', 'react-dom', 'react/jsx-runtime'],
 }));
 

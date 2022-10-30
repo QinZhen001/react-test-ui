@@ -1,4 +1,3 @@
-const { nodeResolve } = require('@rollup/plugin-node-resolve');
 const commonjs = require('@rollup/plugin-commonjs');
 const typescript = require('@rollup/plugin-typescript');
 const postcss = require('rollup-plugin-postcss');
@@ -20,7 +19,6 @@ const configs = Object.keys(inputs).map((key) => ({
       },
     }),
     postcss(),
-    commonjs(),
   ],
   external: ['react', 'react-dom', 'react/jsx-runtime'],
 }));
