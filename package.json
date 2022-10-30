@@ -1,18 +1,29 @@
 {
   "name": "test-aaa-ui-kit",
-  "version": "0.1.0",
+  "version": "0.1.2-rc.4",
   "description": "",
   "main": "lib/index.js",
   "module": "es/index.js",
   "types": "lib/components/index.d.ts",
+  "unpkg": "dist/index.js",
   "sideEffects": [
     "**/*.css"
+  ],
+  "files": [
+    "dist",
+    "lib",
+    "es"
   ],
   "scripts": {
     "clean": "rimraf ./dist ./lib ./es",
     "storybook": "start-storybook -p 6006",
-    "build": "npm run build:storybook",
-    "build:storybook": "build-storybook -o dist",
+    "build": "run-s clean && run-p build:cjs build:mjs build:umd",
+    "build:cjs": "rollup --config ./scripts/rollup-cjs.config.js && run-s entry:cjs",
+    "build:mjs": "rollup --config ./scripts/rollup-mjs.config.js && run-s entry:mjs",
+    "build:umd": "rollup --config ./scripts/rollup-umd.config.js",
+    "entry:cjs": "esbuild src/components/index.tsx --outfile=lib/index.js --format=cjs",
+    "entry:mjs": "esbuild src/components/index.tsx --outfile=es/index.js --format=esm",
+    "build:storybook": "build-storybook -o storybook",
     "lint": "eslint --cache .",
     "lint:fix": "npm run lint --fix"
   },
@@ -24,10 +35,13 @@
   },
   "devDependencies": {
     "@babel/core": "^7.16.12",
+    "@babel/plugin-transform-runtime": "^7.19.6",
     "@babel/preset-env": "^7.16.11",
     "@babel/preset-react": "^7.18.6",
-    "@babel/plugin-transform-runtime": "^7.19.6",
     "@babel/preset-typescript": "^7.16.7",
+    "@rollup/plugin-commonjs": "^23.0.2",
+    "@rollup/plugin-node-resolve": "^15.0.1",
+    "@rollup/plugin-typescript": "^9.0.2",
     "@storybook/addon-actions": "^6.4.14",
     "@storybook/addon-docs": "^6.5.5",
     "@storybook/addon-essentials": "^6.4.14",
@@ -36,34 +50,39 @@
     "@storybook/react": "^6.4.22",
     "@types/classnames": "2.2.11",
     "@types/react": "^17.0.0",
+    "@types/react-datepicker": "^3.1.1",
     "@types/react-dom": "^17.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.41.0",
+    "esbuild": "^0.15.12",
     "eslint": "^8.20.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-config-standard": "^17.0.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.30.1",
-    "@typescript-eslint/eslint-plugin": "^5.41.0",
     "lint-staged": "^13.0.3",
     "npm-run-all": "4.1.5",
     "postcss": "^8.4.14",
     "prettier": "^2.7.1",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
+    "rollup": "^3.2.3",
+    "rollup-plugin-postcss": "^4.0.2",
     "tailwindcss": "2.0.3",
     "typescript": "4.5.2",
-    "simple-git-hooks": "^2.8.1"
+    "yorkie": "^2.0.0"
   },
   "peerDependencies": {
     "react": ">=17.0.0",
     "react-dom": ">=17.0.0"
   },
-  "simple-git-hooks": {
-    "pre-commit": "npx lint-staged"
+  "gitHooks": {
+    "pre-commit": "lint-staged"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,md}": [
-      "eslint --cache --fix"
+      "eslint --cache --fix",
+      "git add"
     ]
   },
   "browserslist": {

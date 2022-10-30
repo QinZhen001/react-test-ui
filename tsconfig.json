@@ -3,7 +3,11 @@
     "target": "es6",
     "experimentalDecorators": true,
     "module": "esnext",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "outDir": "lib",
     "noImplicitAny": true,
     "noImplicitThis": true,
@@ -11,6 +15,7 @@
     "allowJs": true,
     "skipLibCheck": true,
     "declaration": true,
+    "declarationDir": ".",
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "strict": true,
@@ -25,6 +30,11 @@
     "jsx": "react-jsx",
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src"],
-  "exclude": ["node_modules", "**/*/*.stories.tsx"]
+  "include": [
+    "src"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/*/*.stories.tsx"
+  ]
 }
