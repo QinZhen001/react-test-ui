@@ -25,11 +25,11 @@ module.exports = {
       },
     }),
     postcss(),
-    resolve(),
+    // babel({
+    //   presets: ['@babel/preset-env', '@babel/preset-react'],
+    // }),
     commonjs(),
-    babel({
-      presets: ['@babel/preset-env', '@babel/preset-react'],
-    }),
+    resolve(),
     injectProcessEnv({
       NODE_ENV: 'production',
     }),
