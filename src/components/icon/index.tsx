@@ -9,5 +9,3 @@ export interface IconProps extends BaseProps {
 export const Icon: FC<IconProps> = ({ name }) => {
   return <i className={'el-icon-' + name}></i>;
 };
-
-export default Icon;

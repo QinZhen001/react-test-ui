@@ -1,3 +1,3 @@
-export const Button = () => <div>Button</div>;
+import React from 'react';
 
-export default Button;
+export const Button = () => <div>Button</div>;

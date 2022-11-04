@@ -1,3 +1,4 @@
+const external = require('rollup-plugin-peer-deps-external');
 const babel = require('@rollup/plugin-babel');
 const injectProcessEnv = require('rollup-plugin-inject-process-env');
 const commonjs = require('@rollup/plugin-commonjs');
@@ -15,28 +16,34 @@ module.exports = {
     file: `dist/index.js`,
     format: 'umd',
     name: transformCamelCase(name),
-    sourcemap: 'inline',
+    // sourcemap: 'inline',
+    globals: {
+      react: 'React',
+      // 'react-router': 'ReactRouter',
+      'react-dom': 'ReactDOM',
+    },
   },
   plugins: [
     typescript({
       compilerOptions: {
         declaration: false,
+        declarationDir: null,
         jsx: 'react',
       },
     }),
     postcss(),
-    // babel({
-    //   presets: ['@babel/preset-env', '@babel/preset-react'],
-    // }),
+    babel(),
     commonjs(),
     resolve(),
     injectProcessEnv({
       NODE_ENV: 'production',
     }),
+    babel({
+      babelHelpers: 'runtime',
+      presets: [['@babel/preset-env'], ['@babel/preset-react']],
+      plugins: [['@babel/plugin-transform-runtime', { useESModules: false }]],
+    }),
+    external(),
   ],
   external: ['react', 'react-dom'],
-  globals: {
-    react: 'React',
-    'react-router': 'ReactRouter',
-  },
 };

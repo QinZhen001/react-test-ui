@@ -1,4 +1,4 @@
-import { FC, useState, useRef, useEffect } from 'react';
+import React, { FC, useState, useRef, useEffect } from 'react';
 import classnames from 'classnames';
 import { BaseProps } from '../../type/index';
 import RcDatePicker from 'react-datepicker';
@@ -150,5 +150,3 @@ export const Calendar: FC<CalendarProps> = ({
     </div>
   );
 };
-
-export default Calendar;

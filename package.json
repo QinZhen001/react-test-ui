@@ -27,7 +27,7 @@
     "build:storybook": "build-storybook -o storybook",
     "lint": "eslint --cache .",
     "lint:fix": "npm run lint --fix",
-    "release": "bumpp --commit --push --tag && pnpm publish"
+    "release": "bumpp --commit --push --tag && npm publish"
   },
   "dependencies": {
     "@babel/runtime": "7.13.17",
