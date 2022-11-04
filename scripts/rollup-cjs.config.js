@@ -25,7 +25,7 @@ const configs = Object.keys(inputs).map((key) => ({
       plugins: [['@babel/plugin-transform-runtime', { useESModules: false }]],
     }),
   ],
-  external: ['react', 'react-dom', 'react/jsx-runtime'],
+  external: ['react', 'react-dom'],
 }));
 
 module.exports = configs;
