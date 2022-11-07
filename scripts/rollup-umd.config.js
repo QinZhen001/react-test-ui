@@ -5,6 +5,7 @@ const commonjs = require('@rollup/plugin-commonjs');
 const resolve = require('@rollup/plugin-node-resolve');
 const typescript = require('@rollup/plugin-typescript');
 const postcss = require('rollup-plugin-postcss');
+const terser = require('@rollup/plugin-terser');
 const path = require('path');
 const { ROOT_PATH, SRC_PATH, transformCamelCase } = require('./utils/index');
 const { name } = require('../package.json');
@@ -19,7 +20,6 @@ module.exports = {
     // sourcemap: 'inline',
     globals: {
       react: 'React',
-      // 'react-router': 'ReactRouter',
       'react-dom': 'ReactDOM',
     },
   },
@@ -28,7 +28,6 @@ module.exports = {
       compilerOptions: {
         declaration: false,
         declarationDir: null,
-        jsx: 'react',
       },
     }),
     postcss(),
@@ -43,7 +42,7 @@ module.exports = {
       presets: [['@babel/preset-env'], ['@babel/preset-react']],
       plugins: [['@babel/plugin-transform-runtime', { useESModules: false }]],
     }),
-    external(),
+    terser(),
   ],
   external: ['react', 'react-dom'],
 };

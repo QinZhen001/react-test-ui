@@ -1,9 +1,5 @@
 import { useState } from 'react';
-import { Calendar } from 'test-aaa-ui-kit';
-// import Dummy from './components/Dummy?qs-should-not-break-plugin-react'
-// import Parent from './hmr/parent'
-// import { CountProvider } from './context/CountProvider'
-// import { ContextButton } from './context/ContextButton'
+import { Calendar, Button } from 'test-aaa-ui-kit';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -11,6 +7,7 @@ function App() {
   return (
     <div className="App">
       <Calendar></Calendar>
+      <Button></Button>
     </div>
   );
 }
