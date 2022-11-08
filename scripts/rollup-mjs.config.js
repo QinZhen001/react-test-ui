@@ -1,8 +1,8 @@
 const commonjs = require('@rollup/plugin-commonjs');
 const resolve = require('@rollup/plugin-node-resolve');
 const typescript = require('@rollup/plugin-typescript');
-const postcss = require('rollup-plugin-postcss');
 const babel = require('@rollup/plugin-babel');
+const postcss = require('rollup-plugin-postcss');
 const terser = require('@rollup/plugin-terser');
 const { getBabelOutputPlugin } = babel;
 
@@ -23,7 +23,9 @@ const configs = Object.keys(inputs).map((key) => ({
         declarationDir: null,
       },
     }),
-    postcss(),
+    postcss({
+      extensions: ['.css', '.less'],
+    }),
     resolve(),
     commonjs(),
     babel({
@@ -31,7 +33,7 @@ const configs = Object.keys(inputs).map((key) => ({
       presets: [['@babel/preset-env'], ['@babel/preset-react']],
       plugins: [['@babel/plugin-transform-runtime', { useESModules: true }]],
     }),
-    terser(),
+    // terser(),
   ],
   external: ['react', 'react-dom'],
 }));

@@ -39,6 +39,7 @@ importers:
       autoprefixer: ^10.4.13
       bumpp: ^8.2.1
       classnames: 2.2.6
+      cssnano: ^5.1.14
       dayjs: 1.10.4
       esbuild: ^0.15.12
       eslint: ^8.20.0
@@ -103,6 +104,7 @@ importers:
       '@typescript-eslint/parser': 5.42.1_hv5g4vtg75sdx6ieprf2wb6ttu
       autoprefixer: 10.4.13_postcss@8.4.18
       bumpp: 8.2.1
+      cssnano: 5.1.14_postcss@8.4.18
       esbuild: 0.15.13
       eslint: 8.27.0
       eslint-config-prettier: 8.5.0_eslint@8.27.0

@@ -18,7 +18,9 @@ const configs = Object.keys(inputs).map((key) => ({
   },
   plugins: [
     typescript(),
-    postcss(),
+    postcss({
+      extensions: ['.css', '.less'],
+    }),
     resolve(),
     commonjs(),
     babel({
@@ -26,7 +28,7 @@ const configs = Object.keys(inputs).map((key) => ({
       presets: [['@babel/preset-env'], ['@babel/preset-react']],
       plugins: [['@babel/plugin-transform-runtime', { useESModules: false }]],
     }),
-    terser(),
+    // terser(),
   ],
   external: ['react', 'react-dom'],
 }));

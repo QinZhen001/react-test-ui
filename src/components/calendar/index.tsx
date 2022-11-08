@@ -4,7 +4,7 @@ import { BaseProps } from '../../type/index';
 import RcDatePicker from 'react-datepicker';
 import dayjs from 'dayjs';
 import 'react-datepicker/dist/react-datepicker.min.css';
-import './index.css';
+import './index.less';
 
 export interface CalendarProps extends BaseProps {
   className?: string;

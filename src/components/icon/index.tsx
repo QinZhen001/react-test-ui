@@ -1,6 +1,5 @@
 import React, { FC } from 'react';
 import { BaseProps } from '../../type/index';
-// import './index.css';
 
 export interface IconProps extends BaseProps {
   name: string;

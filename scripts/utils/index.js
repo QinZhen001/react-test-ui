@@ -6,7 +6,7 @@ const SRC_PATH = path.resolve(__dirname, '../../', 'src');
 const PUBLIC_PATH = path.resolve(__dirname, '../../', 'public');
 const ROOT_PATH = path.resolve(__dirname, '../../');
 const DEFAULT_PORT = 3000;
-const IGNORE_PATH = ['index.tsx', 'react-app-env.d.ts'];
+const IGNORE_PATH = ['index.tsx', 'react-app-env.d.ts', 'style'];
 
 const getEntry = () => {
   const result = {};
@@ -17,7 +17,6 @@ const getEntry = () => {
       result[item] = path.resolve(componentsPath, item, './index.tsx');
     }
   });
-  console.log(Object.keys(result).length + ' components packing!');
   console.log(result);
   return result;
 };

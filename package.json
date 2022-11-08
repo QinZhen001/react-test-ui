@@ -21,7 +21,6 @@
     "build:cjs": "rollup --config ./scripts/rollup-cjs.config.js && run-s entry:cjs",
     "build:mjs": "rollup --config ./scripts/rollup-mjs.config.js && run-s entry:mjs",
     "build:umd": "rollup --config ./scripts/rollup-umd.config.js",
-    "build:umd1": "esbuild src/components/index.tsx --bundle --external:react --external:react-dom --outfile=dist/index.js --format=iife",
     "entry:cjs": "esbuild src/components/index.tsx --outfile=lib/index.js --format=cjs",
     "entry:mjs": "esbuild src/components/index.tsx --outfile=es/index.js --format=esm",
     "build:storybook": "build-storybook -o storybook",
@@ -91,7 +90,8 @@
     "autoprefixer": "^10.4.13",
     "tslib": "^2.4.1",
     "less": "^4.1.1",
-    "vite": "^3.0.0"
+    "vite": "^3.0.0",
+    "cssnano": "^5.1.14"
   },
   "peerDependencies": {
     "react": ">=17.0.0",

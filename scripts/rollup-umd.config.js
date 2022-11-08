@@ -6,6 +6,9 @@ const resolve = require('@rollup/plugin-node-resolve');
 const typescript = require('@rollup/plugin-typescript');
 const postcss = require('rollup-plugin-postcss');
 const terser = require('@rollup/plugin-terser');
+const autoprefixer = require('autoprefixer');
+const cssnano = require('cssnano');
+
 const path = require('path');
 const { ROOT_PATH, SRC_PATH, transformCamelCase } = require('./utils/index');
 const { name } = require('../package.json');
@@ -30,10 +33,13 @@ module.exports = {
         declarationDir: null,
       },
     }),
-    postcss(),
-    babel(),
-    commonjs(),
+    postcss({
+      extensions: ['.css', '.less'],
+      extract: true,
+      plugins: [autoprefixer(), cssnano()],
+    }),
     resolve(),
+    commonjs(),
     injectProcessEnv({
       NODE_ENV: 'production',
     }),
@@ -42,7 +48,7 @@ module.exports = {
       presets: [['@babel/preset-env'], ['@babel/preset-react']],
       plugins: [['@babel/plugin-transform-runtime', { useESModules: false }]],
     }),
-    terser(),
+    // terser(),
   ],
   external: ['react', 'react-dom'],
 };
