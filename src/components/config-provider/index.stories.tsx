@@ -7,6 +7,7 @@ import zhCN from '../locale-provider/locale/zh_CN';
 import enUS from '../locale-provider/locale/en_US';
 
 console.log('zhCN', zhCN);
+
 const meta: Meta = {
   title: 'Components/ConfigProvider',
   component: ConfigProvider,

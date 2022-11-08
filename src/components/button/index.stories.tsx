@@ -1,14 +1,6 @@
 import React from 'react';
 import { Meta } from '@storybook/react';
-
-const Button = ({ children }) => {
-  return (
-    <button>
-      Button
-      {children}
-    </button>
-  );
-};
+import { Button } from './index';
 
 const meta: Meta = {
   title: 'Components/Button',
@@ -24,15 +16,8 @@ type DocsProps = {
 
 export const Docs = ({ primary, secondary, ghost, danger }: DocsProps) => (
   <>
-    <Button>1111</Button>
+    <Button></Button>
   </>
 );
-
-// Docs.args = {
-//   primary: "确定",
-//   secondary: "取消",
-//   ghost: "ghost",
-//   danger: "danger",
-// };
 
 export default meta;

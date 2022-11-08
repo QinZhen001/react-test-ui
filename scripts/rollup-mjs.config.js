@@ -31,7 +31,7 @@ const configs = Object.keys(inputs).map((key) => ({
       presets: [['@babel/preset-env'], ['@babel/preset-react']],
       plugins: [['@babel/plugin-transform-runtime', { useESModules: true }]],
     }),
-    // terser(),
+    terser(),
   ],
   external: ['react', 'react-dom'],
 }));
