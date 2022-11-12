@@ -18,13 +18,13 @@ export type LocaleComponentName = Exclude<keyof Locale, 'locale'>;
 export interface LocaleReceiverProps<
   C extends LocaleComponentName = LocaleComponentName
 > {
-  componentName: C;
+  componentName?: C;
   defaultLocale?: Locale[C] | (() => Locale[C]);
   children: (
     locale: Locale[C],
     localeCode?: string,
     fullLocale?: object
-  ) => React.ReactNode;
+  ) => React.ReactElement;
 }
 
 export interface LocaleProviderProps {

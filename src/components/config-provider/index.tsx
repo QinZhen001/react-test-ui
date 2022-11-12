@@ -5,15 +5,27 @@ import type {
   ProviderChildrenProps,
 } from './types';
 import { LocaleReceiver, LocaleProvider } from '../locale-provider/index';
-import defaultLocale from '../locale-provider/locale/en_US';
 import { ConfigConsumer, ConfigContext } from './context';
 import type { Locale } from '../locale-provider/types';
+
+const DEFAULT_PREFIX_CLS = 'ag';
 
 const ProviderChildren: React.FC<ProviderChildrenProps> = (props) => {
   const { children, locale, legacyLocale, parentContext } = props;
 
+  const getPrefixCls = React.useCallback(
+    (suffixCls: string, customizePrefixCls?: string) => {
+      const { prefixCls } = props;
+      if (customizePrefixCls) return customizePrefixCls;
+      const mergedPrefixCls = prefixCls || DEFAULT_PREFIX_CLS;
+      return suffixCls ? `${mergedPrefixCls}-${suffixCls}` : mergedPrefixCls;
+    },
+    [props.prefixCls]
+  );
+
   const config = {
     ...parentContext,
+    getPrefixCls,
     locale: locale || legacyLocale,
   };
 
@@ -28,18 +40,24 @@ const ProviderChildren: React.FC<ProviderChildrenProps> = (props) => {
 };
 
 export const ConfigProvider: FC<ConfigProviderProps> = (props) => {
+  const { prefixCls } = props;
+  const suffixCls = props.locale?.locale;
+  const className = prefixCls ? `${prefixCls}-${suffixCls}` : suffixCls;
+
   return (
     <LocaleReceiver>
       {(_, __, legacyLocale) => (
-        <ConfigConsumer>
-          {(context) => (
-            <ProviderChildren
-              parentContext={context}
-              legacyLocale={legacyLocale as Locale}
-              {...props}
-            />
-          )}
-        </ConfigConsumer>
+        <div className={className}>
+          <ConfigConsumer>
+            {(context) => (
+              <ProviderChildren
+                parentContext={context}
+                legacyLocale={legacyLocale as Locale}
+                {...props}
+              />
+            )}
+          </ConfigConsumer>
+        </div>
       )}
     </LocaleReceiver>
   );
