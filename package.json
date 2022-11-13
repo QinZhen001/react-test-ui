@@ -1,6 +1,6 @@
 {
   "name": "test-aaa-ui-kit",
-  "version": "0.1.4-beta.0",
+  "version": "0.1.4-beta.1",
   "description": "",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -26,6 +26,7 @@
     "build:storybook": "build-storybook -o storybook",
     "lint": "eslint --cache .",
     "lint:fix": "npm run lint --fix",
+    "version": "auto-changelog -p && git add CHANGELOG.md",
     "release": "bumpp --commit --push --tag && npm publish"
   },
   "dependencies": {
@@ -91,7 +92,8 @@
     "tslib": "^2.4.1",
     "less": "^4.1.1",
     "vite": "^3.0.0",
-    "cssnano": "^5.1.14"
+    "cssnano": "^5.1.14",
+    "auto-changelog": "^2.4.0"
   },
   "peerDependencies": {
     "react": ">=17.0.0",
