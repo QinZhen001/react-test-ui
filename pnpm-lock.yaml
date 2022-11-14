@@ -36,6 +36,7 @@ importers:
       '@types/react-dom': ^17.0.0
       '@typescript-eslint/eslint-plugin': ^5.41.0
       '@typescript-eslint/parser': ^5.41.0
+      auto-changelog: ^2.4.0
       autoprefixer: ^10.4.13
       bumpp: ^8.2.1
       classnames: 2.2.6
@@ -102,6 +103,7 @@ importers:
       '@types/react-dom': 17.0.18
       '@typescript-eslint/eslint-plugin': 5.42.1_egfira7vmoecj5zqas3zmgghty
       '@typescript-eslint/parser': 5.42.1_hv5g4vtg75sdx6ieprf2wb6ttu
+      auto-changelog: 2.4.0
       autoprefixer: 10.4.13_postcss@8.4.18
       bumpp: 8.2.1
       cssnano: 5.1.14_postcss@8.4.18
@@ -4850,6 +4852,20 @@ packages:
     resolution: {integrity: sha512-Wm6ukoaOGJi/73p/cl2GvLjTI5JM1k/O14isD73YML8StrH/7/lRFgmg8nICZgD3bZZvjwCGxtMOD3wWNAu8cg==}
     engines: {node: '>= 4.5.0'}
     hasBin: true
+    dev: true
+
+  /auto-changelog/2.4.0:
+    resolution: {integrity: sha512-vh17hko1c0ItsEcw6m7qPRf3m45u+XK5QyCrrBFViElZ8jnKrPC1roSznrd1fIB/0vR/zawdECCRJtTuqIXaJw==}
+    engines: {node: '>=8.3'}
+    hasBin: true
+    dependencies:
+      commander: 7.2.0
+      handlebars: 4.7.7
+      node-fetch: 2.6.7
+      parse-github-url: 1.0.2
+      semver: 7.3.8
+    transitivePeerDependencies:
+      - encoding
     dev: true
 
   /autoprefixer/10.4.13_postcss@8.4.18:
@@ -10528,6 +10544,12 @@ packages:
       is-alphanumerical: 1.0.4
       is-decimal: 1.0.4
       is-hexadecimal: 1.0.4
+    dev: true
+
+  /parse-github-url/1.0.2:
+    resolution: {integrity: sha512-kgBf6avCbO3Cn6+RnzRGLkUsv4ZVqv/VfAYkRsyBcgkshNvVBkRn1FEZcW0Jb+npXQWm2vHPnnOqFteZxRRGNw==}
+    engines: {node: '>=0.10.0'}
+    hasBin: true
     dev: true
 
   /parse-json/2.2.0:

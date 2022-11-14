@@ -1,6 +1,6 @@
 import React, { FC, useState, useRef, useEffect } from 'react';
 import classnames from 'classnames';
-import { BaseProps } from '../../type/index';
+import { BaseProps } from '../../types/index';
 import RcDatePicker from 'react-datepicker';
 import dayjs from 'dayjs';
 import 'react-datepicker/dist/react-datepicker.min.css';

@@ -58,6 +58,8 @@
 @border-radius-base: 2px;
 @font-variant-base: tabular-nums;
 @body-background: @white;
+@font-feature-settings-base: 'tnum';
+@heading-color: fade(@black, 85%);
 
 // vertical paddings
 @padding-lg: 24px; // containers
@@ -77,3 +79,106 @@
 @height-base: 32px;
 @height-lg: 40px;
 @height-sm: 24px;
+
+// Disabled states
+@disabled-color: fade(#000, 25%);
+@disabled-bg: @white;
+@disabled-active-bg: tint(@black, 90%);
+@disabled-color-dark: fade(#fff, 35%);
+
+// Border color
+@border-color-base: hsv(0, 0, 85%); // base border outline a component
+@border-color-split: hsv(0, 0, 94%); // split border inside a component
+@border-color-inverse: @white;
+@border-width-base: 1px; // width of the border for a component
+@border-style-base: solid; // style of a components border
+
+// Animation
+@ease-base-out: cubic-bezier(0.7, 0.3, 0.1, 1);
+@ease-base-in: cubic-bezier(0.9, 0, 0.3, 0.7);
+@ease-out: cubic-bezier(0.215, 0.61, 0.355, 1);
+@ease-in: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+@ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
+@ease-out-back: cubic-bezier(0.12, 0.4, 0.29, 1.46);
+@ease-in-back: cubic-bezier(0.71, -0.46, 0.88, 0.6);
+@ease-in-out-back: cubic-bezier(0.71, -0.46, 0.29, 1.46);
+@ease-out-circ: cubic-bezier(0.08, 0.82, 0.17, 1);
+@ease-in-circ: cubic-bezier(0.6, 0.04, 0.98, 0.34);
+@ease-in-out-circ: cubic-bezier(0.78, 0.14, 0.15, 0.86);
+@ease-out-quint: cubic-bezier(0.23, 1, 0.32, 1);
+@ease-in-quint: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+@ease-in-out-quint: cubic-bezier(0.86, 0, 0.07, 1);
+
+// Buttons
+@btn-font-weight: 400;
+@btn-border-radius: 4px;
+@btn-border-width: 4px;
+@btn-border-style: @border-style-base;
+@btn-shadow: 0 2px 0 rgba(0, 0, 0, 0.015);
+@btn-primary-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
+@btn-text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
+// @btn-disable-color: @disabled-color;
+// @btn-disable-bg: @disabled-bg;
+// @btn-disable-border: @border-color-base;
+
+
+// primary
+@btn-primary-color: @white;
+@btn-primary-bg: @primary-color;
+@btn-primary-hover-bg:@blue-5;
+@btn-primary-active-bg:@blue-7;
+@btn-primary-disable-color:@white;
+@btn-primary-disable-bg:@blue-3;
+
+// secondry
+
+// outline 
+
+@btn-padding-horizontal-base: 38px;
+@btn-height-base: @height-base;
+@btn-line-height: 1.0;
+
+// sm 
+@btn-font-size-sm: @font-size-base;
+@btn-padding-horizontal-sm: @padding-sm;
+@btn-height-sm: @height-sm;
+@btn-line-height-sm:@btn-line-height;
+
+// middle
+@btn-font-size-md: @font-size-base;
+@btn-padding-horizontal-md: @btn-padding-horizontal-base;
+@btn-height-md: @btn-height-base;
+@btn-line-height-md:@btn-line-height;
+
+// lg 
+@btn-font-size-lg: @font-size-base;
+@btn-padding-horizontal-lg: @btn-padding-horizontal-base;
+@btn-height-lg: @height-lg;
+@btn-line-height-lg:@btn-line-height;
+
+// @btn-default-color: @text-color;
+// @btn-default-bg: @white;
+// @btn-default-border: @border-color-base;
+
+@btn-danger-color: #fff;
+@btn-danger-bg: @error-color;
+@btn-danger-border: @error-color;
+
+
+
+
+
+
+
+
+// @btn-circle-size: @btn-height-base;
+// @btn-circle-size-lg: @btn-height-lg;
+// @btn-circle-size-sm: @btn-height-sm;
+
+// @btn-square-size: @btn-height-base;
+// @btn-square-size-lg: @btn-height-lg;
+// @btn-square-size-sm: @btn-height-sm;
+// @btn-square-only-icon-size: @font-size-base + 2px;
+// @btn-square-only-icon-size-sm: @font-size-base;
+// @btn-square-only-icon-size-lg: @btn-font-size-lg + 2px;
+

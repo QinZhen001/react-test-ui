@@ -1,10 +1,4 @@
-import React from 'react';
-import './style/index.less';
+import Button from './button';
+export * from './button';
 
-export const Button = () => (
-  <div className="btn-wrapper">
-    <div className="btn1">btn1</div>
-    <div className="btn2">btn2</div>
-    <div className="btn3">btn3</div>
-  </div>
-);
+export default Button;

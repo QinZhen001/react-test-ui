@@ -6,3 +6,5 @@ export interface BaseProps {
   className?: string;
   children?: React.ReactNode;
 }
+
+export type SizeType = 'small' | 'middle' | 'large' | undefined;

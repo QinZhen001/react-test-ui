@@ -12,4 +12,5 @@ export interface ProviderChildrenProps extends ConfigProviderProps {
 
 export interface ConfigConsumerProps {
   locale?: Locale;
+  getPrefixCls: (suffixCls?: string, customizePrefixCls?: string) => string;
 }

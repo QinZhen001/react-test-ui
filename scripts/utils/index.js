@@ -6,14 +6,16 @@ const SRC_PATH = path.resolve(__dirname, '../../', 'src');
 const PUBLIC_PATH = path.resolve(__dirname, '../../', 'public');
 const ROOT_PATH = path.resolve(__dirname, '../../');
 const DEFAULT_PORT = 3000;
+
 const IGNORE_PATH = ['index.tsx', 'react-app-env.d.ts', 'style'];
+const REG_IGNORE_PREFIX = /^_/;
 
 const getEntry = () => {
   const result = {};
   const componentsPath = path.resolve(SRC_PATH, './components');
   const res = fs.readdirSync(componentsPath);
   res.forEach((item) => {
-    if (!IGNORE_PATH.includes(item)) {
+    if (!IGNORE_PATH.includes(item) && !item.test(REG_IGNORE_PREFIX)) {
       result[item] = path.resolve(componentsPath, item, './index.tsx');
     }
   });
