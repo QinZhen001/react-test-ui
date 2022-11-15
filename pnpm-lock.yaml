@@ -54,6 +54,8 @@ importers:
       npm-run-all: 4.1.5
       postcss: ^8.4.14
       prettier: ^2.7.1
+      rc-motion: ^2.6.1
+      rc-notification: ~4.6.0
       react: ^17.0.0
       react-datepicker: 3.6.0
       react-dom: ^17.0.0
@@ -70,6 +72,8 @@ importers:
       '@babel/runtime': 7.13.17
       classnames: 2.2.6
       dayjs: 1.10.4
+      rc-motion: 2.6.2_sfoxds7t5ydpegc3knd667wn6m
+      rc-notification: 4.6.1_sfoxds7t5ydpegc3knd667wn6m
       react-datepicker: 3.6.0_sfoxds7t5ydpegc3knd667wn6m
     devDependencies:
       '@babel/core': 7.20.2
@@ -5349,7 +5353,7 @@ packages:
       mississippi: 3.0.0
       mkdirp: 0.5.6
       move-concurrently: 1.0.1
-      promise-inflight: 1.0.1_bluebird@3.7.2
+      promise-inflight: 1.0.1
       rimraf: 2.7.1
       ssri: 6.0.2
       unique-filename: 1.1.1
@@ -11315,17 +11319,6 @@ packages:
         optional: true
     dev: true
 
-  /promise-inflight/1.0.1_bluebird@3.7.2:
-    resolution: {integrity: sha512-6zWPyEOFaQBJYcGMHBKTKJ3u6TBsnMFOIZSa6ce1e/ZrrsOlnHRHbabMjLiBYKp+n44X9eUI6VUPaukCXHuG4g==}
-    peerDependencies:
-      bluebird: '*'
-    peerDependenciesMeta:
-      bluebird:
-        optional: true
-    dependencies:
-      bluebird: 3.7.2
-    dev: true
-
   /promise.allsettled/1.0.6:
     resolution: {integrity: sha512-22wJUOD3zswWFqgwjNHa1965LvqTX87WPu/lreY2KSd7SVcERfuZ4GfUaOnJNnvtoIv2yXT/W00YIGMetXtFXg==}
     engines: {node: '>= 0.4'}
@@ -11499,6 +11492,47 @@ packages:
       schema-utils: 3.1.1
       webpack: 4.46.0
     dev: true
+
+  /rc-motion/2.6.2_sfoxds7t5ydpegc3knd667wn6m:
+    resolution: {integrity: sha512-4w1FaX3dtV749P8GwfS4fYnFG4Rb9pxvCYPc/b2fw1cmlHJWNNgOFIz7ysiD+eOrzJSvnLJWlNQQncpNMXwwpg==}
+    peerDependencies:
+      react: '>=16.9.0'
+      react-dom: '>=16.9.0'
+    dependencies:
+      '@babel/runtime': 7.20.1
+      classnames: 2.2.6
+      rc-util: 5.24.4_sfoxds7t5ydpegc3knd667wn6m
+      react: 17.0.2
+      react-dom: 17.0.2_react@17.0.2
+    dev: false
+
+  /rc-notification/4.6.1_sfoxds7t5ydpegc3knd667wn6m:
+    resolution: {integrity: sha512-NSmFYwrrdY3+un1GvDAJQw62Xi9LNMSsoQyo95tuaYrcad5Bn9gJUL8AREufRxSQAQnr64u3LtP3EUyLYT6bhw==}
+    engines: {node: '>=8.x'}
+    peerDependencies:
+      react: '>=16.9.0'
+      react-dom: '>=16.9.0'
+    dependencies:
+      '@babel/runtime': 7.20.1
+      classnames: 2.2.6
+      rc-motion: 2.6.2_sfoxds7t5ydpegc3knd667wn6m
+      rc-util: 5.24.4_sfoxds7t5ydpegc3knd667wn6m
+      react: 17.0.2
+      react-dom: 17.0.2_react@17.0.2
+    dev: false
+
+  /rc-util/5.24.4_sfoxds7t5ydpegc3knd667wn6m:
+    resolution: {integrity: sha512-2a4RQnycV9eV7lVZPEJ7QwJRPlZNc06J7CwcwZo4vIHr3PfUqtYgl1EkUV9ETAc6VRRi8XZOMFhYG63whlIC9Q==}
+    peerDependencies:
+      react: '>=16.9.0'
+      react-dom: '>=16.9.0'
+    dependencies:
+      '@babel/runtime': 7.20.1
+      react: 17.0.2
+      react-dom: 17.0.2_react@17.0.2
+      react-is: 16.13.1
+      shallowequal: 1.1.0
+    dev: false
 
   /react-datepicker/3.6.0_sfoxds7t5ydpegc3knd667wn6m:
     resolution: {integrity: sha512-QCCtC1Y5kXZSbULbP33P2p0yTU+0Det7eBFABVM2k6AqdIvyBHVkO/hlq2WDeHlPtaf+DEniCIYjrv2BFdUMHw==}
@@ -12351,6 +12385,10 @@ packages:
     dependencies:
       kind-of: 6.0.3
     dev: true
+
+  /shallowequal/1.1.0:
+    resolution: {integrity: sha512-y0m1JoUZSlPAjXVtPPW70aZWfIL/dSP7AFkRnniLCrK/8MDKog3TySTBmckD+RObVxH0v4Tox67+F14PdED2oQ==}
+    dev: false
 
   /shebang-command/1.2.0:
     resolution: {integrity: sha512-EV3L1+UQWGor21OmnvojK36mhg+TyIKDh3iFBKBohr5xeXIhNBcx8oWdgkTEEQ+BEFFYdLRuqMfd5L84N1V5Vg==}

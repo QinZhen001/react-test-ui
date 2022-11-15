@@ -33,7 +33,9 @@
     "@babel/runtime": "7.13.17",
     "classnames": "2.2.6",
     "dayjs": "1.10.4",
-    "react-datepicker": "3.6.0"
+    "react-datepicker": "3.6.0",
+    "rc-motion": "^2.6.1",
+    "rc-notification": "~4.6.0"
   },
   "devDependencies": {
     "@babel/core": "^7.16.12",

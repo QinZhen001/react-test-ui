@@ -10,6 +10,10 @@ import type { Locale } from '../locale-provider/types';
 
 const DEFAULT_PREFIX_CLS = 'ag';
 
+function getGlobalPrefixCls() {
+  return DEFAULT_PREFIX_CLS;
+}
+
 const ProviderChildren: React.FC<ProviderChildrenProps> = (props) => {
   const { children, locale, legacyLocale, parentContext } = props;
 
@@ -38,6 +42,34 @@ const ProviderChildren: React.FC<ProviderChildrenProps> = (props) => {
     <ConfigContext.Provider value={config}>{childNode}</ConfigContext.Provider>
   );
 };
+
+export const globalConfig = () => ({
+  getPrefixCls: (suffixCls?: string, customizePrefixCls?: string) => {
+    if (customizePrefixCls) return customizePrefixCls;
+    return suffixCls
+      ? `${getGlobalPrefixCls()}-${suffixCls}`
+      : getGlobalPrefixCls();
+  },
+  getRootPrefixCls: (rootPrefixCls?: string, customizePrefixCls?: string) => {
+    // Customize rootPrefixCls is first priority
+    if (rootPrefixCls) {
+      return rootPrefixCls;
+    }
+
+    // If Global prefixCls provided, use this
+    if (DEFAULT_PREFIX_CLS) {
+      return DEFAULT_PREFIX_CLS;
+    }
+
+    // [Legacy] If customize prefixCls provided, we cut it to get the prefixCls
+    if (customizePrefixCls && customizePrefixCls.includes('-')) {
+      return customizePrefixCls.replace(/^(.*)-[^-]*$/, '$1');
+    }
+
+    // Fallback to default prefixCls
+    return getGlobalPrefixCls();
+  },
+});
 
 export const ConfigProvider: FC<ConfigProviderProps> = (props) => {
   const { prefixCls } = props;

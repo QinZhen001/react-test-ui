@@ -23,22 +23,20 @@ export interface ButtonProps
   size?: SizeType;
   disabled?: boolean;
   loading?: boolean | { delay?: number };
-  // ghost?: boolean;
   htmlType?: ButtonHTMLType;
   onClick?: React.MouseEventHandler<HTMLElement>;
   error?: boolean;
   success?: boolean;
-  warn?: boolean;
+  warning?: boolean;
   // block?: boolean;
   children?: React.ReactNode;
 }
 
-const Button: FC<ButtonProps> = (props, ref) => {
+export const Button: FC<ButtonProps> = (props, ref) => {
   const {
     loading = false,
     prefixCls: customizePrefixCls,
     type = 'primary',
-    // danger,
     shape = 'default',
     size = 'middle',
     disabled,
@@ -48,7 +46,7 @@ const Button: FC<ButtonProps> = (props, ref) => {
     htmlType = 'button',
     error = false,
     success = false,
-    warn = false,
+    warning = false,
     ...rest
   } = props;
 
@@ -77,7 +75,7 @@ const Button: FC<ButtonProps> = (props, ref) => {
       [`${prefixCls}-disabled`]: !!disabled,
       [`${prefixCls}-error`]: !!error,
       [`${prefixCls}-success`]: !!success,
-      [`${prefixCls}-warn`]: !!warn,
+      [`${prefixCls}-warning`]: !!warning,
       // linkButtonRestProps.href !== undefined && mergedDisabled,
     },
     // compactItemClassnames,

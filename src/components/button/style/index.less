@@ -10,7 +10,7 @@
   .btn();
   // .btn-default();
 
-  > span {
+  >span {
     display: inline-block;
   }
 
@@ -20,6 +20,45 @@
 
   &-secondary {
     .btn-secondary();
+  }
+
+  &-outline {
+    .btn-outline();
+  }
+
+  // primary some
+  &-primary&-success{
+    color: red !important;
+    background: red !important;
+    border: red !important;
+  }
+  &-primary&-warning{
+    color: red !important;
+    background: red !important;
+    border: red !important;
+  }
+  &-primary&-error{
+    color: red !important;
+    background: red !important;
+    border: red !important;
+  }
+
+
+  // secondary-some
+  &-secondary&-success{
+    color: red !important;
+    background: red !important;
+    border: red !important;
+  }
+  &-secondary&-warning{
+    color: red !important;
+    background: red !important;
+    border: red !important;
+  }
+  &-secondary&-error{
+    color: red !important;
+    background: red !important;
+    border: red !important;
   }
 
 
@@ -102,8 +141,8 @@
   // }
 
   // http://stackoverflow.com/a/21281554/3040605
-  &:focus > span,
-  &:active > span {
+  &:focus>span,
+  &:active>span {
     position: relative;
   }
 

@@ -2,6 +2,7 @@
 
 @theme: default; // 主题名 
 @ag-prefix: ag; // 前缀
+@iconfont-css-prefix:if;
 
 // -------- Colors -----------
 // >>> Primary
@@ -55,7 +56,7 @@
 @font-size-lg: @font-size-base + 2px;
 @font-size-sm: @font-size-base - 2px;
 @line-height-base: 1.5715;
-@border-radius-base: 2px;
+@border-radius-base: 4px;
 @font-variant-base: tabular-nums;
 @body-background: @white;
 @font-feature-settings-base: 'tnum';
@@ -108,11 +109,23 @@
 @ease-out-quint: cubic-bezier(0.23, 1, 0.32, 1);
 @ease-in-quint: cubic-bezier(0.755, 0.05, 0.855, 0.06);
 @ease-in-out-quint: cubic-bezier(0.86, 0, 0.07, 1);
+@animation-duration-slow: 0.3s; // Modal
+@animation-duration-base: 0.2s;
+@animation-duration-fast: 0.1s; // Tooltip
+
+// Shadow
+@shadow-color: #D9DBE0;
+// @shadow-color-inverse: @component-background;
+@shadow-1: 0px 5px 20px -4px #D9DBE0;
+@shadow-2: -4px 0px 12px 0px #E3E7EC;
+@shadow-3: 4px 0px 12px 0px #E3E7EC;
+@box-shadow-base: @shadow-1;
+
 
 // Buttons
 @btn-font-weight: 400;
 @btn-border-radius: 4px;
-@btn-border-width: 4px;
+@btn-border-width: @border-width-base;
 @btn-border-style: @border-style-base;
 @btn-shadow: 0 2px 0 rgba(0, 0, 0, 0.015);
 @btn-primary-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
@@ -125,14 +138,34 @@
 // primary
 @btn-primary-color: @white;
 @btn-primary-bg: @primary-color;
-@btn-primary-hover-bg:@blue-5;
-@btn-primary-active-bg:@blue-7;
-@btn-primary-disable-color:@white;
-@btn-primary-disable-bg:@blue-3;
+@btn-primary-hover-bg: @blue-5;
+@btn-primary-active-bg: @blue-7;
+@btn-primary-disable-color: @white;
+@btn-primary-disable-bg: @blue-3;
 
-// secondry
+// secondary
+@btn-secondary-color: @neutral-7;
+@btn-secondary-bg: @white;
+@btn-secondary-border-color: @neutral-4;
+@btn-secondary-hover-color: @blue-base;
+@btn-secondary-hover-border-color: @blue-base;
+@btn-secondary-active-color: @blue-7;
+@btn-secondary-active-border-color: @blue-7;
+@btn-secondary-disable-color: @neutral-5;
+@btn-secondary-disable-bg: @neutral-2;
+@btn-secondary-disable-border-color: @neutral-4;
 
 // outline 
+@btn-outline-color: @blue-base;
+@btn-outline-bg: @white;
+@btn-outline-border-color: @blue-base;
+@btn-outline-hover-color: @blue-5;
+@btn-outline-hover-border-color: @blue-5;
+@btn-outline-active-color: @blue-7;
+@btn-outline-active-border-color: @blue-7;
+@btn-outline-disable-color: @blue-3;
+@btn-outline-disable-bg: @white;
+@btn-outline-disable-border-color: @blue-3;
 
 @btn-padding-horizontal-base: 38px;
 @btn-height-base: @height-base;
@@ -142,19 +175,19 @@
 @btn-font-size-sm: @font-size-base;
 @btn-padding-horizontal-sm: @padding-sm;
 @btn-height-sm: @height-sm;
-@btn-line-height-sm:@btn-line-height;
+@btn-line-height-sm: @btn-line-height;
 
 // middle
 @btn-font-size-md: @font-size-base;
 @btn-padding-horizontal-md: @btn-padding-horizontal-base;
 @btn-height-md: @btn-height-base;
-@btn-line-height-md:@btn-line-height;
+@btn-line-height-md: @btn-line-height;
 
 // lg 
 @btn-font-size-lg: @font-size-base;
 @btn-padding-horizontal-lg: @btn-padding-horizontal-base;
 @btn-height-lg: @height-lg;
-@btn-line-height-lg:@btn-line-height;
+@btn-line-height-lg: @btn-line-height;
 
 // @btn-default-color: @text-color;
 // @btn-default-bg: @white;
@@ -163,12 +196,6 @@
 @btn-danger-color: #fff;
 @btn-danger-bg: @error-color;
 @btn-danger-border: @error-color;
-
-
-
-
-
-
 
 
 // @btn-circle-size: @btn-height-base;
@@ -182,3 +209,67 @@
 // @btn-square-only-icon-size-sm: @font-size-base;
 // @btn-square-only-icon-size-lg: @btn-font-size-lg + 2px;
 
+
+// Alert
+@alert-padding-vertical: 9px;
+@alert-padding-horizontal: 24px;
+@alert-message-color: @neutral-7;
+@alert-close-color: @blue-base;
+
+// success
+@alert-success-bg-color: @green-1;
+@alert-success-border-color: @green-1;
+@alert-success-icon-color: @green-base;
+
+// info 
+@alert-info-bg-color: @blue-1;
+@alert-info-border-color: @blue-1;
+@alert-info-icon-color: @blue-base;
+
+// warning
+@alert-warning-bg-color: @yellow-1;
+@alert-warning-border-color: @yellow-1;
+@alert-warning-icon-color: @yellow-base;
+
+// error
+@alert-error-bg-color: @red-1;
+@alert-error-border-color: @red-1;
+@alert-error-icon-color: @red-base;
+
+
+
+// Message 
+@message-zindex: 999;
+@message-notice-content-padding: 9px 32px;
+@message-notice-content-bg: @white;
+
+
+// Avatar
+// ---
+@avatar-size-base: 32px;
+@avatar-size-lg: 40px;
+@avatar-size-sm: 24px;
+@avatar-font-size-base: 18px;
+@avatar-font-size-lg: 24px;
+@avatar-font-size-sm: 14px;
+@avatar-bg: #ccc;
+@avatar-color: #fff;
+@avatar-border-radius: @border-radius-base;
+// @avatar-group-overlapping: -8px;
+// @avatar-group-space: 3px;
+// @avatar-group-border-color: #fff;
+
+
+// Badge
+// ---
+@zindex-badge: auto;
+@badge-height: 20px;
+@badge-height-sm: 14px;
+@badge-dot-size: 6px;
+@badge-dot-size-sm: 4px;
+@badge-font-size: @font-size-sm;
+@badge-font-size-sm: @font-size-sm;
+@badge-font-weight: normal;
+// @badge-status-size: 6px;
+@badge-text-color: @white;
+@badge-color: @red-base;

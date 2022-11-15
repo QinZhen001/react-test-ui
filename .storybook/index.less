@@ -1,3 +1,35 @@
-.ag-btn {
-  margin-right: 10px;
+body {
+  min-width: 800px;
+}
+
+section {
+  display: flex;
+}
+
+.ag-btn+.ag-btn {
+  margin-left: 10px;
+}
+
+.ag-alert+.ag-alert {
+  margin-top: 10px !important;
+}
+
+.title {
+  height: 38px;
+  line-height: 38px;
+  font-size: 22px;
+}
+
+.wrapper {
+  display: flex;
+
+  .item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .item+.item {
+    margin-left: 15px;
+  }
 }

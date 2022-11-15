@@ -1,7 +1,6 @@
 import React from 'react';
 import { Meta } from '@storybook/react';
-import Icon, { IconProps } from './icon';
-import { IconArrowLeft } from './icons/index';
+import { IconProps, IconArrowLeft, Icon, IconClose } from './index';
 
 const meta: Meta = {
   title: 'Components/Icon',
@@ -32,8 +31,23 @@ export const Docs = (props: IconProps) => (
     <div>
       <IconArrowLeft {...props}></IconArrowLeft>
     </div>
-    <div>
-      <div></div>
+    <div className="wrapper">
+      <div className="item">
+        <p>IconClose</p>
+        <IconClose></IconClose>
+      </div>
+      <div className="item">
+        <p>IconClose</p>
+        <IconClose></IconClose>
+      </div>
+      <div className="item">
+        <p>IconClose</p>
+        <IconClose></IconClose>
+      </div>
+      <div className="item">
+        <p>IconClose</p>
+        <IconClose></IconClose>
+      </div>
     </div>
   </>
 );

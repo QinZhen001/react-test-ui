@@ -17,7 +17,7 @@ export const ConfigContext = React.createContext<ConfigConsumerProps>({
 
 export const ConfigConsumer = ConfigContext.Consumer;
 
-const SizeContext = React.createContext<SizeType>(undefined);
+export const SizeContext = React.createContext<SizeType>(undefined);
 
 export interface SizeContextProps {
   size?: SizeType;

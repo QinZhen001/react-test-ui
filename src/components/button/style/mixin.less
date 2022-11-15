@@ -35,6 +35,7 @@
 
 .button-disabled(@color; @background; @border) {
   &[disabled] {
+
     &,
     &:hover,
     &:focus,
@@ -132,8 +133,36 @@
 
 // secondary button style
 .btn-secondary() {
-  .button-color(@btn-primary-color, @btn-primary-bg, @btn-primary-bg);
-  // .button-disabled();
+  .button-color(@btn-secondary-color, @btn-secondary-bg, @btn-secondary-border-color);
+
+  &:hover {
+    color: @btn-secondary-hover-color;
+    border-color: @btn-secondary-hover-border-color;
+  }
+
+  &:active {
+    color: @btn-secondary-active-color;
+    border-color: @btn-secondary-active-border-color;
+  }
+
+  .button-disabled(@btn-secondary-disable-color, @btn-secondary-disable-bg, @btn-secondary-disable-border-color);
+}
+
+// outline button style
+.btn-outline() {
+  .button-color(@btn-outline-color, @btn-outline-bg, @btn-outline-border-color);
+
+  &:hover {
+    color: @btn-outline-hover-color;
+    border-color: @btn-outline-hover-border-color;
+  }
+
+  &:active {
+    color: @btn-outline-active-color;
+    border-color: @btn-outline-active-border-color;
+  }
+
+  .button-disabled(@btn-outline-disable-color, @btn-outline-disable-bg, @btn-outline-border-color);
 }
 
 // dashed button style

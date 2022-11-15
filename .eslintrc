@@ -26,6 +26,7 @@
       "off"
     ],
     "n/handle-callback-err": "off",
+    "n/no-callback-literal":"off",
     "n/no-path-concat": "warn",
     // "eqeqeq": ["off"],
     "prefer-spread": "warn",

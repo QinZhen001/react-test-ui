@@ -17,8 +17,8 @@ interface SvgComponentProps extends React.SVGProps<SVGSVGElement> {
 }
 
 export const svgBaseProps = {
-  width: '1em',
-  height: '1em',
+  width: '16px',
+  height: '16px',
   fill: 'currentColor',
   focusable: false,
 };
@@ -46,7 +46,7 @@ export const Icon: FC<IconProps> = (props) => {
   const { getPrefixCls } = useContext(ConfigContext);
   const prefixCls = getPrefixCls('icon');
 
-  const svgClassString = classNames(prefixCls, {
+  const svgClassString = classNames(prefixCls, className, {
     [`${prefixCls}-spin`]: !!spin,
   });
 
