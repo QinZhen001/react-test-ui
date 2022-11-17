@@ -1,26 +1,30 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "target": "es6",
+    "experimentalDecorators": true,
+    "module": "esnext",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "outDir": "lib",
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "strictNullChecks": true,
     "allowJs": true,
     "skipLibCheck": true,
+    "declaration": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
-    "module": "esnext",
+    "suppressImplicitAnyIndexErrors": true,
+    "noEmitHelpers": true,
+    "noEmitOnError": false,
+    "emitDeclarationOnly": true,
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react"
+    "jsx": "react-jsx",
+    "noFallthroughCasesInSwitch": true
   },
-  "include": [
-    "src",
-    ".storybook"
-  ]
+  "include": ["src"],
+  "exclude": ["node_modules", "**/*/*.stories.tsx"]
 }
