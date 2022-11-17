@@ -6,3 +6,11 @@
 
 
 should `import React from 'react'` for UMD build.
+
+
+## icon
+
+[svg to react component](https://react-svgr.com/playground)
+
+we should not import ./icon 
+better: import ./icon/components/xxx   (just for tree shaking)

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Meta } from '@storybook/react';
 import Button, { ButtonProps, buttonTypes, sizeTypes } from './index';
+import { IconAreaYes } from '../icon';
 
 const meta: Meta = {
   title: 'Components/Button',
@@ -26,47 +27,95 @@ const meta: Meta = {
 
 export const Docs = (args: ButtonProps) => (
   <>
-    <div style={{ padding: '10px' }}>
-      <Button {...args}>custom button</Button>
-    </div>
-    <div style={{ padding: '10px' }}>
-      <div className="title">test type</div>
-      <Button type="primary">type primary</Button>
-      <Button type="secondary">type secondary</Button>
-      <Button type="outline">type outline</Button>
-    </div>
-    <div style={{ padding: '10px' }}>
-      <div className="title">test size</div>
-      <Button size="small">size small</Button>
-      <Button size="middle">size middle</Button>
-      <Button size="large">size large</Button>
-    </div>
-    <div style={{ padding: '10px' }}>
-      <div className="title">test primary</div>
-      <Button type="primary">primary default</Button>
-      <Button type="primary" success>
+    <Button {...args}>custom button</Button>
+    <div className="title">type</div>
+    <section className="wrapper">
+      <Button type="primary" className="inner">
+        type primary
+      </Button>
+      <Button type="secondary" className="inner">
+        type secondary
+      </Button>
+      <Button type="outline" className="inner">
+        type outline
+      </Button>
+    </section>
+    <div className="title">size</div>
+    <section className="wrapper">
+      <Button size="small" className="inner">
+        size small
+      </Button>
+      <Button size="middle" className="inner">
+        size middle
+      </Button>
+      <Button size="large" className="inner">
+        size large
+      </Button>
+    </section>
+    <div className="title">primary</div>
+    <section className="wrapper">
+      <Button type="primary" className="inner">
+        primary default
+      </Button>
+      <Button type="primary" success className="inner">
         primary success
       </Button>
-      <Button type="primary" warning>
+      <Button type="primary" warning className="inner">
         primary warning
       </Button>
-      <Button type="primary" error>
+      <Button type="primary" error className="inner">
         primary error
       </Button>
-    </div>
-    <div style={{ padding: '10px' }}>
-      <div className="title">test secondary</div>
-      <Button type="secondary">secondary default</Button>
-      <Button type="secondary" success>
+    </section>
+    <div className="title">primary disabled</div>
+    <section className="wrapper">
+      <Button type="primary" disabled className="inner">
+        primary default disabled
+      </Button>
+      <Button type="primary" success disabled className="inner">
+        primary success disabled
+      </Button>
+      <Button type="primary" warning disabled className="inner">
+        primary warning disabled
+      </Button>
+      <Button type="primary" error disabled className="inner">
+        primary error disabled
+      </Button>
+    </section>
+    <div className="title">secondary</div>
+    <section className="wrapper">
+      <Button type="secondary" className="inner">
+        secondary default
+      </Button>
+      <Button type="secondary" success className="inner">
         primary success
       </Button>
-      <Button type="secondary" warning>
+      <Button type="secondary" warning className="inner">
         primary warning
       </Button>
-      <Button type="secondary" error>
+      <Button type="secondary" error className="inner">
         primary error
       </Button>
-    </div>
+    </section>
+    <div className="title">secondary disabled</div>
+    <section className="wrapper">
+      <Button type="secondary" disabled className="inner">
+        secondary default disabled
+      </Button>
+      <Button type="secondary" success disabled className="inner">
+        primary success disabled
+      </Button>
+      <Button type="secondary" warning disabled className="inner">
+        primary warning disabled
+      </Button>
+      <Button type="secondary" error disabled className="inner">
+        primary error disabled
+      </Button>
+    </section>
+    <div className="title">with icon</div>
+    <section className="wrapper">
+      <Button icon={<IconAreaYes color="white"></IconAreaYes>}>primary</Button>
+    </section>
   </>
 );
 

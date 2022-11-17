@@ -2,7 +2,7 @@
 @import '../../style/mixins/index';
 
 @badge-prefix-cls: ~'@{ag-prefix}-badge';
-// @number-prefix-cls: ~'@{ant-prefix}-scroll-number';
+
 
 .@{badge-prefix-cls} {
   .reset-component();
@@ -34,6 +34,16 @@
     font-size: @badge-font-size-sm;
     line-height: @badge-height-sm;
     border-radius: (@badge-height-sm / 2);
+  }
+
+  &-has-child {
+    display: flex;
+    align-items: flex-start;
+  }
+
+  &-children{
+    transform: translate(-50%,-50%);
+    transform-origin: 100% 0%; 
   }
 
   &-dot {
@@ -201,12 +211,12 @@
 }
 
 // Safari will blink with transform when inner element has absolute style.
-.safari-fix-motion() {
-  /* stylelint-disable property-no-vendor-prefix */
-  -webkit-transform-style: preserve-3d;
-  -webkit-backface-visibility: hidden;
-  /* stylelint-enable property-no-vendor-prefix */
-}
+// .safari-fix-motion() {
+//   /* stylelint-disable property-no-vendor-prefix */
+//   -webkit-transform-style: preserve-3d;
+//   -webkit-backface-visibility: hidden;
+//   /* stylelint-enable property-no-vendor-prefix */
+// }
 
 // @keyframes antZoomBadgeIn {
 //   0% {

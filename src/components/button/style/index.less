@@ -10,6 +10,11 @@
   .btn();
   // .btn-default();
 
+  .@{ag-prefix}-icon{
+    margin-right: 8px;
+    vertical-align: middle;
+  }
+
   >span {
     display: inline-block;
   }
@@ -28,37 +33,29 @@
 
   // primary some
   &-primary&-success{
-    color: red !important;
-    background: red !important;
-    border: red !important;
+    .btn-primary-success();
   }
+  
   &-primary&-warning{
-    color: red !important;
-    background: red !important;
-    border: red !important;
+    .btn-primary-warning();
   }
+
   &-primary&-error{
-    color: red !important;
-    background: red !important;
-    border: red !important;
+    .btn-primary-error();
   }
 
 
   // secondary-some
   &-secondary&-success{
-    color: red !important;
-    background: red !important;
-    border: red !important;
+    .btn-secondary-success();
   }
+
   &-secondary&-warning{
-    color: red !important;
-    background: red !important;
-    border: red !important;
+   .btn-secondary-warning();
   }
+
   &-secondary&-error{
-    color: red !important;
-    background: red !important;
-    border: red !important;
+    .btn-secondary-error();
   }
 
 

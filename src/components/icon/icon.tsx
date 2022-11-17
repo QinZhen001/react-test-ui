@@ -8,12 +8,13 @@ export interface IconProps extends BaseProps {
   rotate?: number; // 旋转角度
   spin?: boolean; // 是否有旋转动画
   viewBox?: string;
-  pathElement?: React.SVGProps<SVGPathElement>;
+  element?: React.SVGProps<SVGElement>;
   onClick?: React.MouseEventHandler<SVGSVGElement>;
+  color?: string;
 }
 
 interface SvgComponentProps extends React.SVGProps<SVGSVGElement> {
-  pathElement?: React.SVGProps<SVGPathElement>;
+  element?: React.SVGProps<SVGElement>;
 }
 
 export const svgBaseProps = {
@@ -24,24 +25,16 @@ export const svgBaseProps = {
 };
 
 const SvgComponent = (props: SvgComponentProps) => {
-  const { pathElement, ...resProps } = props;
+  const { element, ...resProps } = props;
   return (
     <svg xmlns="http://www.w3.org/2000/svg" className="icon" {...resProps}>
-      {pathElement}
+      {element}
     </svg>
   );
 };
 
 export const Icon: FC<IconProps> = (props) => {
-  const {
-    className,
-    viewBox = '0 0 1024 1024',
-    spin,
-    rotate,
-    onClick,
-    style = {},
-    ...restProps
-  } = props;
+  const { className, viewBox = '0 0 1024 1024', spin, rotate, onClick, color, style = {}, ...restProps } = props;
 
   const { getPrefixCls } = useContext(ConfigContext);
   const prefixCls = getPrefixCls('icon');
@@ -53,6 +46,10 @@ export const Icon: FC<IconProps> = (props) => {
   if (rotate) {
     style.msTransform = `rotate(${rotate}deg)`;
     style.transform = `rotate(${rotate}deg)`;
+  }
+
+  if (color) {
+    style.color = color;
   }
 
   const innerSvgProps = {

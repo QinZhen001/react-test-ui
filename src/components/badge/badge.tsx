@@ -8,7 +8,7 @@ import './style/index.less';
 
 export interface BadgeProps extends BaseProps {
   /** Number to show in badge */
-  count?: React.ReactNode;
+  count?: number | string;
   showZero?: boolean;
   /** Max count to show */
   overflowCount?: number;
@@ -29,7 +29,7 @@ export const Badge: FC<BadgeProps> = ({
   prefixCls: customizePrefixCls,
   scrollNumberPrefixCls: customizeScrollNumberPrefixCls,
   children,
-  count = null,
+  count,
   overflowCount = 99,
   dot = false,
   size = 'default',
@@ -43,9 +43,7 @@ export const Badge: FC<BadgeProps> = ({
   const prefixCls = getPrefixCls('badge', customizePrefixCls);
 
   // ================================ Misc ================================
-  const numberedDisplayCount = (
-    (count as number) > (overflowCount as number) ? `${overflowCount}+` : count
-  ) as string | number | null;
+  const numberedDisplayCount = ((count as number) > (overflowCount as number) ? `${overflowCount}+` : count) as string | number | null;
 
   const isZero = numberedDisplayCount === '0' || numberedDisplayCount === 0;
   // const ignoreCount = count === null || isZero;
@@ -53,24 +51,23 @@ export const Badge: FC<BadgeProps> = ({
   const mergedCount = showAsDot ? '' : numberedDisplayCount;
 
   const isHidden = useMemo(() => {
-    const isEmpty =
-      mergedCount === null || mergedCount === undefined || mergedCount === '';
+    const isEmpty = mergedCount === null || mergedCount === undefined || mergedCount === '';
     return (isEmpty || (isZero && !showZero)) && !showAsDot;
   }, [mergedCount, isZero, showZero, showAsDot]);
 
   // Count should be cache in case hidden change it
-  const countRef = useRef(count);
-  if (!isHidden) {
-    countRef.current = count;
-  }
-  const livingCount = countRef.current;
+  // const countRef = useRef(count);
+  // if (!isHidden) {
+  //   countRef.current = count;
+  // }
+  // const livingCount = countRef.current;
 
   // We need cache count since remove motion should not change count display
-  const displayCountRef = useRef(mergedCount);
-  if (!isHidden) {
-    displayCountRef.current = mergedCount;
-  }
-  const displayCount = displayCountRef.current;
+  // const displayCountRef = useRef(mergedCount);
+  // if (!isHidden) {
+  //   displayCountRef.current = mergedCount;
+  // }
+  // const displayCount = displayCountRef.current;
 
   // We will cache the dot status to avoid shaking on leaved motion
   const isDotRef = useRef(showAsDot);
@@ -80,13 +77,12 @@ export const Badge: FC<BadgeProps> = ({
 
   // =============================== Styles ===============================
   const mergedStyle = useMemo<React.CSSProperties>(() => {
-    // TODO: add color to style
     if (!offset) {
       return { ...style };
     }
     const offsetStyle: React.CSSProperties = {
       marginTop: offset[1],
-      right: -parseInt(offset[0] as string, 10),
+      right: parseInt(offset[0] as string, 10),
     };
 
     return {
@@ -103,17 +99,22 @@ export const Badge: FC<BadgeProps> = ({
       [`${prefixCls}-dot`]: isDot,
       [`${prefixCls}-count`]: !isDot,
       [`${prefixCls}-count-sm`]: size === 'small',
-      [`${prefixCls}-multiple-words`]:
-        !isDot && displayCount && displayCount.toString().length > 1,
+      [`${prefixCls}-children`]: !!children,
+      [`${prefixCls}-multiple-words`]: !isDot && numberedDisplayCount && numberedDisplayCount.toString().length > 1,
     },
     className
   );
 
+  const badgeWrapperClassName = classNames({
+    [`${prefixCls}-has-child`]: !!children,
+  });
+
   return (
-    // mergedStyle
-    <span {...restProps} style={mergedStyle} className={badgeClassName}>
+    <span className={badgeWrapperClassName}>
       {children}
-      {!isHidden && !isDot ? livingCount : null}
+      <span {...restProps} style={mergedStyle} className={badgeClassName}>
+        {!isHidden && !isDot ? numberedDisplayCount : null}
+      </span>
     </span>
   );
 };

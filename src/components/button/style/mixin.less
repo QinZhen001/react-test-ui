@@ -52,7 +52,6 @@
 // --------------------------------------------------
 .btn() {
   position: relative;
-  display: inline-block;
   font-weight: @btn-font-weight;
   white-space: nowrap;
   text-align: center;
@@ -103,16 +102,6 @@
   }
 }
 
-// default button style
-// .btn-default() {
-//   .button-variant-other(@btn-default-color; @btn-default-bg; @btn-default-border; );
-//   &:hover,
-//   &:focus,
-//   &:active {
-//     text-decoration: none;
-//     background: @btn-default-bg;
-//   }
-// }
 
 // primary button style
 .btn-primary() {
@@ -175,4 +164,103 @@
 .btn-danger() {
   .button-color(@btn-danger-color; @btn-danger-bg; @background);
   // .button-disabled();
+}
+
+
+.btn-primary-success() {
+  .button-color(@white, @green-base, @green-base);
+
+  &:hover {
+    background: @green-5;
+    border-color: @green-5;
+  }
+
+  &:active {
+    background: @green-7;
+    border-color: @green-7;
+  }
+
+  .button-disabled(@white, @green-3, @green-3);
+}
+
+
+.btn-primary-warning() {
+  .button-color(@white, @yellow-base, @yellow-base);
+
+  &:hover {
+    background: @yellow-5;
+    border-color: @yellow-5;
+  }
+
+  &:active {
+    background: @yellow-7;
+    border-color: @yellow-7;
+  }
+
+  .button-disabled(@white, @yellow-3, @yellow-3);
+}
+
+.btn-primary-error() {
+  .button-color(@white, @red-base, @red-base);
+
+  &:hover {
+    background: @red-5;
+    border-color: @red-5;
+  }
+
+  &:active {
+    background: @red-7;
+    border-color: @red-7;
+  }
+
+  .button-disabled(@white, @red-3, @red-3);
+}
+
+.btn-secondary-success() {
+  .button-color(@green-base, @white, @green-base);
+
+  &:hover {
+    color: @green-5;
+    border-color: @green-5;
+  }
+
+  &:active {
+    color: @green-7;
+    border-color: @green-7;
+  }
+
+  .button-disabled(@green-3, @white, @green-3);
+}
+
+.btn-secondary-warning() {
+  .button-color(@yellow-base, @white, @yellow-base);
+
+  &:hover {
+    color: @yellow-5;
+    border-color: @yellow-5;
+  }
+
+  &:active {
+    color: @yellow-7;
+    border-color: @yellow-7;
+  }
+
+  .button-disabled(@yellow-3, @white, @yellow-3);
+}
+
+
+.btn-secondary-error(){
+  .button-color(@red-base, @white, @red-base);
+
+  &:hover {
+    color: @red-5;
+    border-color: @red-5;
+  }
+
+  &:active {
+    color: @red-7;
+    border-color: @red-7;
+  }
+
+  .button-disabled(@red-3, @white, @red-3);
 }

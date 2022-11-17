@@ -1,3 +1,5 @@
+import type { ModalLocale } from '../modal/locale';
+
 export interface Locale {
   locale: string;
   global?: Record<string, any>;
@@ -7,6 +9,7 @@ export interface Locale {
     copied?: any;
     expand?: any;
   };
+  Modal?: ModalLocale;
   Form?: {
     optional?: string;
     defaultValidateMessages?: string;
@@ -15,16 +18,10 @@ export interface Locale {
 
 export type LocaleComponentName = Exclude<keyof Locale, 'locale'>;
 
-export interface LocaleReceiverProps<
-  C extends LocaleComponentName = LocaleComponentName
-> {
+export interface LocaleReceiverProps<C extends LocaleComponentName = LocaleComponentName> {
   componentName?: C;
   defaultLocale?: Locale[C] | (() => Locale[C]);
-  children: (
-    locale: Locale[C],
-    localeCode?: string,
-    fullLocale?: object
-  ) => React.ReactElement;
+  children: (locale: Locale[C], localeCode?: string, fullLocale?: object) => React.ReactElement;
 }
 
 export interface LocaleProviderProps {

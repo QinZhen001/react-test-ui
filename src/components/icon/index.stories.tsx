@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meta } from '@storybook/react';
-import { IconProps, IconArrowLeft, Icon, IconClose } from './index';
+import { IconProps, IconArrowLeft, Icon, IconClose, IconAreaYes, IconAreaInfo, IconAreaError } from './index';
 
 const meta: Meta = {
   title: 'Components/Icon',
@@ -15,40 +15,40 @@ const meta: Meta = {
       defaultValue: false,
     },
     onClick: { action: 'clicked' },
-    style: {
-      control: 'object',
-      defaultValue: {
-        // color: 'red',
-      },
+    color: {
+      control: 'text',
+      defaultValue: 'red',
     },
   },
 };
 
-// type DocsProps = {};
-
 export const Docs = (props: IconProps) => (
   <>
-    <div>
-      <IconArrowLeft {...props}></IconArrowLeft>
-    </div>
-    <div className="wrapper">
+    <div className="title">test props</div>
+    <section className="wrapper">
       <div className="item">
-        <p>IconClose</p>
-        <IconClose></IconClose>
+        <IconArrowLeft {...props}></IconArrowLeft>
+      </div>
+    </section>
+    <div className="title">all icons</div>
+    <section className="wrapper">
+      <div className="item">
+        <div>IconAreaYes</div>
+        <IconAreaYes></IconAreaYes>
       </div>
       <div className="item">
-        <p>IconClose</p>
-        <IconClose></IconClose>
+        <div>IconAreaInfo</div>
+        <IconAreaInfo></IconAreaInfo>
       </div>
       <div className="item">
-        <p>IconClose</p>
-        <IconClose></IconClose>
+        <div>IconAreaError</div>
+        <IconAreaError></IconAreaError>
       </div>
       <div className="item">
-        <p>IconClose</p>
+        <div>IconClose</div>
         <IconClose></IconClose>
       </div>
-    </div>
+    </section>
   </>
 );
 

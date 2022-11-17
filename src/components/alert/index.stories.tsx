@@ -39,10 +39,10 @@ export const Docs = (args: AlertProps) => (
     </section>
     <section>
       <div className="title">test type</div>
-      <Alert type="success" message="Alert success"></Alert>
-      <Alert type="info" message="Alert info"></Alert>
-      <Alert type="warning" message="Alert warning"></Alert>
-      <Alert type="error" message="Alert error"></Alert>
+      <Alert type="success" message="Alert success" showIcon></Alert>
+      <Alert type="info" message="Alert info" showIcon></Alert>
+      <Alert type="warning" message="Alert warning" showIcon></Alert>
+      <Alert type="error" message="Alert error" showIcon></Alert>
     </section>
     <section>
       <div className="title">test close</div>
@@ -51,11 +51,7 @@ export const Docs = (args: AlertProps) => (
     </section>
     <section>
       <div className="title">test action</div>
-      <Alert
-        type="info"
-        message="with action"
-        action={<button>custom btn</button>}
-      ></Alert>
+      <Alert type="info" message="with action" action={<button>custom btn</button>}></Alert>
     </section>
   </>
 );

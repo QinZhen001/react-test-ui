@@ -1,13 +1,9 @@
 body {
-  min-width: 800px;
-}
-
-section {
-  display: flex;
-}
-
-.ag-btn+.ag-btn {
-  margin-left: 10px;
+  min-width: 600px;
+  height: 100vh;
+  font-family: PingFangSC-Regular, PingFang SC, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+    'Noto Sans', sans-serif;
+  box-sizing: border-box;
 }
 
 .ag-alert+.ag-alert {
@@ -15,8 +11,8 @@ section {
 }
 
 .title {
-  height: 38px;
-  line-height: 38px;
+  height: 42px;
+  line-height: 42px;
   font-size: 22px;
 }
 
@@ -32,4 +28,24 @@ section {
   .item+.item {
     margin-left: 15px;
   }
+
+  // 工具类 不需要 .item
+  .inner+.inner {
+    margin-left: 10px;
+  }
+}
+
+.tooltip-demo {
+  overflow: hidden;
+  margin-left: 100px;
+
+  .ag-btn {
+    margin-right: 8px;
+    margin-bottom: 8px;
+    width: 70px;
+    text-align: center;
+    padding: 0;
+    display: inline-block
+  }
+
 }

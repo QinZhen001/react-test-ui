@@ -184,21 +184,13 @@ export const Avatar: FC<AvatarProps> = (props) => {
         : {};
 
     childrenToRender = (
-      <span
-        className={`${prefixCls}-string`}
-        ref={avatarChildrenRef}
-        style={{ ...sizeChildrenStyle, ...childrenStyle }}
-      >
+      <span className={`${prefixCls}-string`} ref={avatarChildrenRef} style={{ ...sizeChildrenStyle, ...childrenStyle }}>
         {children}
       </span>
     );
   } else {
     childrenToRender = (
-      <span
-        className={`${prefixCls}-string`}
-        style={{ opacity: 0 }}
-        ref={avatarChildrenRef}
-      >
+      <span className={`${prefixCls}-string`} style={{ opacity: 0 }} ref={avatarChildrenRef}>
         {children}
       </span>
     );
@@ -209,11 +201,7 @@ export const Avatar: FC<AvatarProps> = (props) => {
   delete others.onError;
 
   return (
-    <span
-      {...others}
-      style={{ ...sizeStyle, ...others.style }}
-      className={classString}
-    >
+    <span {...others} style={{ ...sizeStyle, ...others.style }} className={classString}>
       {childrenToRender}
     </span>
   );

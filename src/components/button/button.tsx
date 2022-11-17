@@ -2,7 +2,7 @@ import React, { FC, useContext } from 'react';
 import { ConfigContext } from '../config-provider/context';
 import classNames from 'classnames';
 import { BaseProps } from '../../types/index';
-import { tuple } from '../_util';
+import { tuple } from '../_util/type';
 import './style/index.less';
 
 export const buttonTypes = tuple('primary', 'secondary', 'outline');
@@ -14,9 +14,7 @@ export type ButtonHTMLType = typeof buttonHTMLTypes[number];
 export const sizeTypes = tuple('small', 'middle', 'large');
 export type SizeType = typeof sizeTypes[number];
 
-export interface ButtonProps
-  extends BaseProps,
-    Omit<React.ButtonHTMLAttributes<any>, 'type' | 'onClick'> {
+export interface ButtonProps extends BaseProps, Omit<React.ButtonHTMLAttributes<any>, 'type' | 'onClick'> {
   type?: ButtonType;
   icon?: React.ReactNode;
   shape?: ButtonShape;
@@ -32,7 +30,7 @@ export interface ButtonProps
   children?: React.ReactNode;
 }
 
-export const Button: FC<ButtonProps> = (props, ref) => {
+export const Button: FC<ButtonProps> = (props) => {
   const {
     loading = false,
     prefixCls: customizePrefixCls,
@@ -82,30 +80,20 @@ export const Button: FC<ButtonProps> = (props, ref) => {
     className
   );
 
-  const handleClick = (
-    e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement, MouseEvent>
-  ) => {
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement, MouseEvent>) => {
     const { onClick } = props;
     // https://github.com/ant-design/ant-design/issues/30207
     // if (innerLoading || mergedDisabled) {
     //   e.preventDefault();
     //   return;
     // }
-    (
-      onClick as React.MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>
-    )?.(e);
+    (onClick as React.MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>)?.(e);
   };
 
   const buttonNode = (
-    <button
-      {...rest}
-      type={htmlType}
-      className={classes}
-      onClick={handleClick}
-      disabled={disabled}
-    >
-      {/* {iconNode}
-      {kids} */}
+    <button {...rest} type={htmlType} className={classes} onClick={handleClick} disabled={disabled}>
+      {icon}
+      {/* {kids} */}
       {children}
     </button>
   );

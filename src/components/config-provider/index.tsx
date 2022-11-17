@@ -1,9 +1,5 @@
 import React, { FC } from 'react';
-import type {
-  ConfigProviderProps,
-  ConfigConsumerProps,
-  ProviderChildrenProps,
-} from './types';
+import type { ConfigProviderProps, ConfigConsumerProps, ProviderChildrenProps } from './types';
 import { LocaleReceiver, LocaleProvider } from '../locale-provider/index';
 import { ConfigConsumer, ConfigContext } from './context';
 import type { Locale } from '../locale-provider/types';
@@ -18,7 +14,7 @@ const ProviderChildren: React.FC<ProviderChildrenProps> = (props) => {
   const { children, locale, legacyLocale, parentContext } = props;
 
   const getPrefixCls = React.useCallback(
-    (suffixCls: string, customizePrefixCls?: string) => {
+    (suffixCls?: string, customizePrefixCls?: string) => {
       const { prefixCls } = props;
       if (customizePrefixCls) return customizePrefixCls;
       const mergedPrefixCls = prefixCls || DEFAULT_PREFIX_CLS;
@@ -38,17 +34,13 @@ const ProviderChildren: React.FC<ProviderChildrenProps> = (props) => {
   if (locale) {
     childNode = <LocaleProvider locale={locale}>{childNode}</LocaleProvider>;
   }
-  return (
-    <ConfigContext.Provider value={config}>{childNode}</ConfigContext.Provider>
-  );
+  return <ConfigContext.Provider value={config}>{childNode}</ConfigContext.Provider>;
 };
 
 export const globalConfig = () => ({
   getPrefixCls: (suffixCls?: string, customizePrefixCls?: string) => {
     if (customizePrefixCls) return customizePrefixCls;
-    return suffixCls
-      ? `${getGlobalPrefixCls()}-${suffixCls}`
-      : getGlobalPrefixCls();
+    return suffixCls ? `${getGlobalPrefixCls()}-${suffixCls}` : getGlobalPrefixCls();
   },
   getRootPrefixCls: (rootPrefixCls?: string, customizePrefixCls?: string) => {
     // Customize rootPrefixCls is first priority
@@ -81,13 +73,7 @@ export const ConfigProvider: FC<ConfigProviderProps> = (props) => {
       {(_, __, legacyLocale) => (
         <div className={className}>
           <ConfigConsumer>
-            {(context) => (
-              <ProviderChildren
-                parentContext={context}
-                legacyLocale={legacyLocale as Locale}
-                {...props}
-              />
-            )}
+            {(context) => <ProviderChildren parentContext={context} legacyLocale={legacyLocale as Locale} {...props} />}
           </ConfigConsumer>
         </div>
       )}

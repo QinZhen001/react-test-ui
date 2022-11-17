@@ -1,4 +1,5 @@
 @import "../colors/index.less";
+@import '../core/index';
 
 @theme: default; // 主题名 
 @ag-prefix: ag; // 前缀
@@ -52,6 +53,8 @@
 @code-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
 @text-color: @neutral-7;
 @text-color-secondary: @neutral-6;
+@icon-color: inherit;
+@icon-color-hover: @neutral-7;
 @font-size-base: 14px;
 @font-size-lg: @font-size-base + 2px;
 @font-size-sm: @font-size-base - 2px;
@@ -61,6 +64,40 @@
 @body-background: @white;
 @font-feature-settings-base: 'tnum';
 @heading-color: fade(@black, 85%);
+
+// Media queries breakpoints
+// @screen-xs and @screen-xs-min is not used in Grid
+// smallest break point is @screen-md
+@screen-xs: 480px;
+@screen-xs-min: @screen-xs;
+// 👆 Extra small screen / phone
+
+// 👇 Small screen / tablet
+@screen-sm: 576px;
+@screen-sm-min: @screen-sm;
+
+// Medium screen / desktop
+@screen-md: 768px;
+@screen-md-min: @screen-md;
+
+// Large screen / wide desktop
+@screen-lg: 992px;
+@screen-lg-min: @screen-lg;
+
+// Extra large screen / full hd
+@screen-xl: 1200px;
+@screen-xl-min: @screen-xl;
+
+// Extra extra large screen / large desktop
+@screen-xxl: 1600px;
+@screen-xxl-min: @screen-xxl;
+
+// provide a maximum
+@screen-xs-max: (@screen-sm-min - 1px);
+@screen-sm-max: (@screen-md-min - 1px);
+@screen-md-max: (@screen-lg-min - 1px);
+@screen-lg-max: (@screen-xl-min - 1px);
+@screen-xl-max: (@screen-xxl-min - 1px);
 
 // vertical paddings
 @padding-lg: 24px; // containers
@@ -112,6 +149,9 @@
 @animation-duration-slow: 0.3s; // Modal
 @animation-duration-base: 0.2s;
 @animation-duration-fast: 0.1s; // Tooltip
+// Motion
+// ---
+@wave-animation-width: 6px;
 
 // Shadow
 @shadow-color: #D9DBE0;
@@ -120,6 +160,24 @@
 @shadow-2: -4px 0px 12px 0px #E3E7EC;
 @shadow-3: 4px 0px 12px 0px #E3E7EC;
 @box-shadow-base: @shadow-1;
+
+// z-index list, order by `z-index`
+@zindex-badge: auto;
+@zindex-table-fixed: 2;
+@zindex-affix: 10;
+@zindex-back-top: 10;
+@zindex-picker-panel: 10;
+@zindex-popup-close: 10;
+@zindex-modal: 1000;
+@zindex-modal-mask: 1000;
+@zindex-message: 1010;
+@zindex-notification: 1010;
+@zindex-popover: 1030;
+@zindex-dropdown: 1050;
+@zindex-picker: 1050;
+@zindex-popoconfirm: 1060;
+@zindex-tooltip: 1070;
+@zindex-image: 1080;
 
 
 // Buttons
@@ -167,7 +225,7 @@
 @btn-outline-disable-bg: @white;
 @btn-outline-disable-border-color: @blue-3;
 
-@btn-padding-horizontal-base: 38px;
+@btn-padding-horizontal-base: 32px;
 @btn-height-base: @height-base;
 @btn-line-height: 1.0;
 
@@ -185,7 +243,7 @@
 
 // lg 
 @btn-font-size-lg: @font-size-base;
-@btn-padding-horizontal-lg: @btn-padding-horizontal-base;
+@btn-padding-horizontal-lg: 38px;
 @btn-height-lg: @height-lg;
 @btn-line-height-lg: @btn-line-height;
 
@@ -239,7 +297,6 @@
 
 
 // Message 
-@message-zindex: 999;
 @message-notice-content-padding: 9px 32px;
 @message-notice-content-bg: @white;
 
@@ -262,7 +319,6 @@
 
 // Badge
 // ---
-@zindex-badge: auto;
 @badge-height: 20px;
 @badge-height-sm: 14px;
 @badge-dot-size: 6px;
@@ -273,3 +329,58 @@
 // @badge-status-size: 6px;
 @badge-text-color: @white;
 @badge-color: @red-base;
+
+
+
+// Tooltip
+// ---- 
+// Tooltip max width
+@tooltip-max-width: 250px;
+// Tooltip text color
+@tooltip-color:@white;
+// Tooltip background color
+@tooltip-bg: @neutral-8;
+// Tooltip arrow width
+@tooltip-arrow-width: 6px * sqrt(2);
+// Tooltip distance with trigger
+@tooltip-distance: @tooltip-arrow-width - 3px;
+// Tooltip arrow color
+@tooltip-arrow-color: @neutral-8;
+@tooltip-border-radius: @border-radius-base;
+
+// arrow border
+@arrow-border-radius: 2px;
+
+
+// Notification
+// ---
+@notification-bg: @white;
+@notification-padding-vertical: 16px;
+@notification-padding-horizontal: 24px;
+
+// Modal
+// --
+@modal-header-padding-vertical: @padding-md;
+@modal-header-padding-horizontal: @padding-lg;
+@modal-body-padding: @padding-lg;
+@modal-header-bg: @white;
+@modal-header-padding: @padding-lg @padding-lg;
+@modal-header-border-width: @border-width-base;
+@modal-header-border-style: @border-style-base;
+@modal-header-title-line-height: 24px;
+@modal-header-title-font-size: @font-size-lg;
+@modal-header-border-color-split: @border-color-split;
+@modal-header-close-size: @modal-header-title-line-height + 2 * @modal-header-padding-vertical;
+@modal-content-bg: @white;
+@modal-heading-color: @neutral-8;
+@modal-close-color: @neutral-6;
+@modal-footer-bg: transparent;
+@modal-footer-border-color-split: @border-color-split;
+@modal-footer-border-style: @border-style-base;
+@modal-footer-padding-vertical: 24px;
+@modal-footer-padding-horizontal: 24px;
+@modal-footer-border-width: @border-width-base;
+@modal-mask-bg: fade(@neutral-8, 60%);
+@modal-confirm-body-padding: 24px;
+@modal-confirm-title-font-size: @font-size-lg;
+@modal-border-radius: 8px;

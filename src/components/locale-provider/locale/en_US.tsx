@@ -11,6 +11,11 @@ const localeValues: Locale = {
     copied: 'copied',
     expand: 'expand',
   },
+  Modal: {
+    okText: 'OK',
+    cancelText: 'Cancel',
+    justOkText: 'OK',
+  },
 };
 
 export default localeValues;

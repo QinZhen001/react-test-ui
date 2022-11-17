@@ -51,17 +51,17 @@ export const Docs = (args) => {
 
   return (
     <>
-      <section>
-        <Button size="small" onClick={info}>
+      <section className="wrapper">
+        <Button size="small" className="inner" onClick={info}>
           message info
         </Button>
-        <Button size="small" onClick={success}>
+        <Button size="small" className="inner" success onClick={success}>
           message success
         </Button>
-        <Button size="small" onClick={error}>
+        <Button size="small" className="inner" error onClick={error}>
           message error
         </Button>
-        <Button size="small" onClick={warning}>
+        <Button size="small" className="inner" warning onClick={warning}>
           message warning
         </Button>
         {/* <Button size="small" onClick={loading}>

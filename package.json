@@ -21,7 +21,7 @@
     "build:cjs": "rollup --config ./scripts/rollup-cjs.config.js && run-s entry:cjs",
     "build:mjs": "rollup --config ./scripts/rollup-mjs.config.js && run-s entry:mjs",
     "build:umd": "rollup --config ./scripts/rollup-umd.config.js",
-    "build:storybook": "build-storybook -o storybook",
+    "build:storybook": "build-storybook -o site",
     "entry:cjs": "esbuild src/components/index.tsx --outfile=lib/index.js --format=cjs",
     "entry:mjs": "esbuild src/components/index.tsx --outfile=es/index.js --format=esm",
     "lint": "eslint --cache .",
@@ -35,7 +35,11 @@
     "dayjs": "1.10.4",
     "react-datepicker": "3.6.0",
     "rc-motion": "^2.6.1",
-    "rc-notification": "~4.6.0"
+    "rc-notification": "~4.6.0",
+    "rc-tooltip": "~5.2.0",
+    "rc-trigger": "^5.2.10",
+    "rc-util": "^5.22.5",
+    "rc-dialog": "~9.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.16.12",

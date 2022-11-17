@@ -2,15 +2,9 @@
   "compilerOptions": {
     "target": "es6",
     "module": "esnext",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "moduleResolution": "node",
     "outDir": "lib",
-    "noImplicitAny": true,
-    "noImplicitThis": true,
     "strictNullChecks": true,
     "importHelpers": true,
     "allowJs": true,
@@ -31,11 +25,6 @@
     "jsx": "react",
     "noFallthroughCasesInSwitch": true
   },
-  "include": [
-    "src"
-  ],
-  "exclude": [
-    "node_modules",
-    "**/*/*.stories.tsx"
-  ]
+  "include": ["src"],
+  "exclude": ["node_modules", "**/*/*.stories.tsx"]
 }

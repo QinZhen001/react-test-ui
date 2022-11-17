@@ -1,12 +1,13 @@
 import React from 'react';
 import { IconClose, IconProps } from '../icon';
-import { tuple, iconPrefixCls } from '../_util/index';
+import { tuple } from '../_util/type';
+import { iconPrefixCls } from '../_util';
 import classNames from 'classnames';
 import RCNotification from 'rc-notification';
-import type {
-  NoticeContent,
-  NotificationInstance as RCNotificationInstance,
-} from 'rc-notification/lib/Notification';
+import { IconAreaYes } from '../icon/components/icon-area-success';
+import { IconAreaInfo } from '../icon/components/icon-area-info';
+import { IconAreaError } from '../icon/components/icon-area-error';
+import type { NoticeContent, NotificationInstance as RCNotificationInstance } from 'rc-notification/lib/Notification';
 import { BaseProps } from '../../types/index';
 import { globalConfig } from '../config-provider/index';
 import './style/index.less';
@@ -37,40 +38,16 @@ export interface ArgsProps extends BaseProps {
 }
 
 export interface MessageInstance {
-  info(
-    content: JointContent,
-    duration?: ConfigDuration,
-    onClose?: ConfigOnClose
-  ): MessageType;
-  success(
-    content: JointContent,
-    duration?: ConfigDuration,
-    onClose?: ConfigOnClose
-  ): MessageType;
-  error(
-    content: JointContent,
-    duration?: ConfigDuration,
-    onClose?: ConfigOnClose
-  ): MessageType;
-  warning(
-    content: JointContent,
-    duration?: ConfigDuration,
-    onClose?: ConfigOnClose
-  ): MessageType;
-  loading(
-    content: JointContent,
-    duration?: ConfigDuration,
-    onClose?: ConfigOnClose
-  ): MessageType;
+  info(content: JointContent, duration?: ConfigDuration, onClose?: ConfigOnClose): MessageType;
+  success(content: JointContent, duration?: ConfigDuration, onClose?: ConfigOnClose): MessageType;
+  error(content: JointContent, duration?: ConfigDuration, onClose?: ConfigOnClose): MessageType;
+  warning(content: JointContent, duration?: ConfigDuration, onClose?: ConfigOnClose): MessageType;
+  loading(content: JointContent, duration?: ConfigDuration, onClose?: ConfigOnClose): MessageType;
   open(args: ArgsProps): MessageType;
 }
 
 export interface MessageApi extends MessageInstance {
-  warn(
-    content: JointContent,
-    duration?: ConfigDuration,
-    onClose?: ConfigOnClose
-  ): MessageType;
+  warn(content: JointContent, duration?: ConfigDuration, onClose?: ConfigOnClose): MessageType;
   config(options: ConfigOptions): void;
   destroy(messageKey?: React.Key): void;
   useMessage(): [MessageInstance, React.ReactElement];
@@ -86,11 +63,11 @@ export interface ConfigOptions {
 }
 
 const typeToIcon = {
-  info: IconClose,
-  success: IconClose,
-  error: IconClose,
-  warning: IconClose,
-  loading: IconClose,
+  success: IconAreaYes,
+  info: IconAreaInfo,
+  error: IconAreaError,
+  warning: IconAreaInfo,
+  // loading: IconClose,
 };
 
 let messageInstance: RCNotificationInstance | null;
@@ -109,16 +86,9 @@ export function getKeyThenIncreaseKey() {
 
 function getRCNotificationInstance(
   args: ArgsProps,
-  callback: (info: {
-    prefixCls: string;
-    rootPrefixCls: string;
-    instance: RCNotificationInstance;
-  }) => void
+  callback: (info: { prefixCls: string; rootPrefixCls: string; instance: RCNotificationInstance }) => void
 ) {
-  const {
-    prefixCls: customizePrefixCls,
-    getPopupContainer: getContextPopupContainer,
-  } = args;
+  const { prefixCls: customizePrefixCls, getPopupContainer: getContextPopupContainer } = args;
   const { getPrefixCls, getRootPrefixCls } = globalConfig();
   const prefixCls = getPrefixCls('message', customizePrefixCls);
   const rootPrefixCls = getRootPrefixCls(args.rootPrefixCls, prefixCls);
@@ -134,9 +104,7 @@ function getRCNotificationInstance(
 
   const instanceConfig = {
     prefixCls,
-    transitionName: hasTransitionName
-      ? transitionName
-      : `${rootPrefixCls}-${transitionName}`,
+    transitionName: hasTransitionName ? transitionName : `${rootPrefixCls}-${transitionName}`,
     style: { top: defaultTop }, // 覆盖原来的样式
     getContainer: getContainer || getContextPopupContainer,
     maxCount,
@@ -157,8 +125,7 @@ function getRCNotificationInstance(
 }
 
 function getRCNoticeProps(args: ArgsProps, prefixCls: string): NoticeContent {
-  const duration =
-    args.duration !== undefined ? args.duration : defaultDuration;
+  const duration = args.duration !== undefined ? args.duration : defaultDuration;
   const IconComponent = typeToIcon[args.type!]({
     className: iconPrefixCls,
   });
@@ -193,9 +160,7 @@ function notice(args: ArgsProps): MessageType {
       return resolve(true);
     };
     getRCNotificationInstance(args, ({ prefixCls, instance }) => {
-      instance.notice(
-        getRCNoticeProps({ ...args, key: target, onClose: callback }, prefixCls)
-      );
+      instance.notice(getRCNoticeProps({ ...args, key: target, onClose: callback }, prefixCls));
     });
   });
   const result: any = () => {
@@ -203,26 +168,18 @@ function notice(args: ArgsProps): MessageType {
       messageInstance.removeNotice(target);
     }
   };
-  result.then = (filled: ThenableArgument, rejected: ThenableArgument) =>
-    closePromise.then(filled, rejected);
+  result.then = (filled: ThenableArgument, rejected: ThenableArgument) => closePromise.then(filled, rejected);
   result.promise = closePromise;
 
   return result;
 }
 
 function isArgsProps(content: JointContent): content is ArgsProps {
-  return (
-    Object.prototype.toString.call(content) === '[object Object]' &&
-    !!(content as ArgsProps).content
-  );
+  return Object.prototype.toString.call(content) === '[object Object]' && !!(content as ArgsProps).content;
 }
 
 export function attachTypeApi(originalApi: MessageApi, type: NoticeType) {
-  originalApi[type] = (
-    content: JointContent,
-    duration?: ConfigDuration,
-    onClose?: ConfigOnClose
-  ) => {
+  originalApi[type] = (content: JointContent, duration?: ConfigDuration, onClose?: ConfigOnClose) => {
     if (isArgsProps(content)) {
       return originalApi.open({ ...content, type });
     }

@@ -11,6 +11,11 @@ const localeValues: Locale = {
     copied: '复制成功',
     expand: '展开',
   },
+  Modal: {
+    okText: '确定',
+    cancelText: '取消',
+    justOkText: '知道了',
+  },
 };
 
 export default localeValues;
