@@ -1,4 +1,5 @@
 node_modules
+site
 .env
 .env-dev
 .env.dev
