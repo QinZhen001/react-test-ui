@@ -8,7 +8,7 @@ import { globalConfig } from '../config-provider';
 import ConfirmDialog from './ConfirmDialog';
 import destroyFns from './destroyFns';
 import { getConfirmLocale } from './locale';
-import type { ModalFuncProps } from './Modal';
+import type { ModalFuncProps } from './modal';
 import { iconPrefixCls } from '../_util/index';
 
 // const defaultRootPrefixCls = '';

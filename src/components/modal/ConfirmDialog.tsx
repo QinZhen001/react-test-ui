@@ -4,9 +4,9 @@ import ConfigProvider from '../config-provider/context';
 // import ActionButton from '../_util/ActionButton';
 import { getTransitionName } from '../_util/motion';
 // import warning from '../_util/warning';
-import type { ModalFuncProps } from './Modal';
+import type { ModalFuncProps } from './modal';
 import { Button } from '../button/button';
-import Dialog from './Modal';
+import Dialog from './modal';
 import './style/index.less';
 
 interface ConfirmDialogProps extends ModalFuncProps {
