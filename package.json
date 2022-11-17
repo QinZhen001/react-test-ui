@@ -21,7 +21,7 @@
     "build:cjs": "rollup --config ./scripts/rollup-cjs.config.js && run-s entry:cjs",
     "build:mjs": "rollup --config ./scripts/rollup-mjs.config.js && run-s entry:mjs",
     "build:umd": "rollup --config ./scripts/rollup-umd.config.js",
-    "build:storybook": "build-storybook -o site",
+    "build:storybook": "build-storybook -o dist",
     "entry:cjs": "esbuild src/components/index.tsx --outfile=lib/index.js --format=cjs",
     "entry:mjs": "esbuild src/components/index.tsx --outfile=es/index.js --format=esm",
     "lint": "eslint --cache .",
