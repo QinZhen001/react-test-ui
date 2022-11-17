@@ -1,3 +1,4 @@
-export const Button = () => <div>Button</div>;
+import Button from './button';
+export * from './button';
 
 export default Button;

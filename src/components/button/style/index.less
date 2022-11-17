@@ -1,0 +1,155 @@
+@import "../../style/index.less";
+@import "./mixin.less";
+
+@btn-prefix-cls: ~'@{ag-prefix}-btn';
+
+// Button styles
+// -----------------------------
+.@{btn-prefix-cls} {
+  line-height: @line-height-base;
+  .btn();
+  // .btn-default();
+
+  .@{ag-prefix}-icon{
+    margin-right: 8px;
+    vertical-align: middle;
+  }
+
+  >span {
+    display: inline-block;
+  }
+
+  &-primary {
+    .btn-primary();
+  }
+
+  &-secondary {
+    .btn-secondary();
+  }
+
+  &-outline {
+    .btn-outline();
+  }
+
+  // primary some
+  &-primary&-success{
+    .btn-primary-success();
+  }
+  
+  &-primary&-warning{
+    .btn-primary-warning();
+  }
+
+  &-primary&-error{
+    .btn-primary-error();
+  }
+
+
+  // secondary-some
+  &-secondary&-success{
+    .btn-secondary-success();
+  }
+
+  &-secondary&-warning{
+   .btn-secondary-warning();
+  }
+
+  &-secondary&-error{
+    .btn-secondary-error();
+  }
+
+
+  // &-ghost {
+  //   .btn-ghost();
+  // }
+
+  // &-dashed {
+  //   .btn-dashed();
+  // }
+
+  // type="danger" will deprecated
+  // use danger instead
+
+  // &-danger {
+  //   .btn-danger();
+  // }
+
+  // &-link {
+  //   .btn-link();
+  // }
+
+  // &-text {
+  //   .btn-text();
+  // }
+
+  // &-dangerous {
+  //   .btn-danger-default();
+  // }
+
+
+  // &-round {
+  //   .btn-round(@btn-prefix-cls);
+  //   &.@{btn-prefix-cls}-icon-only {
+  //     width: auto;
+  //   }
+  // }
+
+  // &-circle {
+  //   .btn-circle(@btn-prefix-cls);
+  // }
+
+  &::before {
+    position: absolute;
+    top: -@btn-border-width;
+    right: -@btn-border-width;
+    bottom: -@btn-border-width;
+    left: -@btn-border-width;
+    z-index: 1;
+    display: none;
+    background: @white;
+    border-radius: inherit;
+    opacity: 0.35;
+    transition: opacity 0.2s;
+    content: '';
+    pointer-events: none;
+  }
+
+
+  &&-loading {
+    position: relative;
+    cursor: default;
+
+    &::before {
+      display: block;
+    }
+  }
+
+  // & > &-loading-icon {
+  //   transition: width 0.3s @ease-in-out, opacity 0.3s @ease-in-out;
+
+  //   .@{iconfont-css-prefix} {
+  //     padding-right: @padding-xs;
+  //     animation: none;
+  //     // for smooth button padding transition
+  //     svg {
+  //       animation: loadingCircle 1s infinite linear;
+  //     }
+  //   }
+  // }
+
+  // http://stackoverflow.com/a/21281554/3040605
+  &:focus>span,
+  &:active>span {
+    position: relative;
+  }
+
+
+  // https://github.com/ant-design/ant-design/issues/12681
+  // same method as Select
+  &:empty {
+    display: inline-block;
+    width: 0;
+    visibility: hidden;
+    content: '\a0';
+  }
+}

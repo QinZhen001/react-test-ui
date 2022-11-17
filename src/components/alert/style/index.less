@@ -1,0 +1,123 @@
+@import "../../style/index.less";
+@import "../../style/mixins/index.less";
+
+@alert-prefix-cls: ~'@{ag-prefix}-alert';
+
+
+.@{alert-prefix-cls} {
+  .reset-component();
+
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: @alert-padding-vertical @alert-padding-horizontal;
+  word-wrap: break-word;
+  border-radius: @border-radius-base;
+  color: @text-color;
+
+  &-content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &-icon {
+    margin-right: @margin-xs;
+  }
+
+  &-success {
+    background-color: @alert-success-bg-color;
+    border: @border-width-base @border-style-base @alert-success-border-color;
+
+    .@{alert-prefix-cls}-icon {
+      color: @alert-success-icon-color;
+    }
+  }
+
+  &-info {
+    background-color: @alert-info-bg-color;
+    border: @border-width-base @border-style-base @alert-info-border-color;
+
+    .@{alert-prefix-cls}-icon {
+      color: @alert-info-icon-color;
+    }
+  }
+
+  &-warning {
+    background-color: @alert-warning-bg-color;
+    border: @border-width-base @border-style-base @alert-warning-border-color;
+
+    .@{alert-prefix-cls}-icon {
+      color: @alert-warning-icon-color;
+    }
+  }
+
+  &-error {
+    background-color: @alert-error-bg-color;
+    border: @border-width-base @border-style-base @alert-error-border-color;
+
+    .@{alert-prefix-cls}-icon {
+      color: @alert-error-icon-color;
+    }
+
+    .@{alert-prefix-cls}-description>pre {
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+
+  &-action {
+    margin-left: @margin-xs;
+  }
+
+  &-close-icon {
+    margin-left: @margin-xs;
+    padding: 0;
+    overflow: hidden;
+    min-width: @font-size-lg;
+    height: @font-size-lg;
+    line-height: 1;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+
+    // .@{iconfont-css-prefix}-close {
+    //   color: @alert-close-color;
+    //   transition: color 0.3s;
+
+    //   &:hover {
+    //     color: @alert-close-hover-color;
+    //   }
+    // }
+  }
+
+  &-close-text {
+    color: @alert-close-color;
+    // transition: color 0.3s;
+    // &:hover {
+    //   color: @alert-close-hover-color;
+    // }
+  }
+
+  &-message {
+    color: @alert-message-color;
+  }
+
+  &&-motion-leave {
+    overflow: hidden;
+    opacity: 1;
+    transition: max-height 0.3s @ease-in-out-circ, opacity 0.3s @ease-in-out-circ,
+      padding-top 0.3s @ease-in-out-circ, padding-bottom 0.3s @ease-in-out-circ,
+      margin-bottom 0.3s @ease-in-out-circ;
+  }
+
+  &&-motion-leave-active {
+    max-height: 0;
+    margin-bottom: 0 !important;
+    padding-top: 0;
+    padding-bottom: 0;
+    opacity: 0;
+  }
+
+}

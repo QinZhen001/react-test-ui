@@ -1,13 +1,5 @@
-import React, { FC } from 'react';
-import { BaseProps } from '../../type/index';
-import './index.css';
+import Icon from './icon';
 
-export interface IconProps extends BaseProps {
-  name: string;
-}
-
-export const Icon: FC<IconProps> = ({ name }) => {
-  return <i className={'el-icon-' + name}></i>;
-};
-
+export * from './icon';
+export * from './components/index';
 export default Icon;

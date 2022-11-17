@@ -28,4 +28,4 @@ env.prod
 .log
 .yarn/
 .vscode/
-
+.eslintcache

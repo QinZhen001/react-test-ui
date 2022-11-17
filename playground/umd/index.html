@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    html body {
+      width: 100vw;
+      height: 100vh;
+      padding: 0;
+      margin: 0;
+    }
+
+  </style>
+
+  <link rel="stylesheet" type="text/css" href="../../dist/index.css"/>
+</head>
+
+<body>
+  <div id="app"></div>
+
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="../../dist/index.js"></script>
+
+  <!-- CDN Link: https://unpkg.com/ -->
+  <!-- <script src="https://unpkg.com/test-aaa-ui-kit@0.1.3/dist/index.js"></script> -->
+
+  <script type="text/babel">
+    const { Calendar, Button } = window.testAaaUiKit || {}
+    const root = ReactDOM.createRoot(document.getElementById("app"));
+    root.render(
+      <div>
+        <Calendar />
+        <Button />
+      </div>
+    )
+  </script>
+</body>
+
+
+
+</html>

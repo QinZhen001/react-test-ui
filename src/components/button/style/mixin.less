@@ -1,0 +1,266 @@
+// mixins for button
+// ------------------------
+.button-size(@height; @padding-horizontal; @font-size; @border-radius) {
+  @padding-vertical: max((round(((@height - @font-size * @line-height-base) / 2) * 10) / 10) - @btn-border-width,
+    0);
+  height: @height;
+  padding: @padding-vertical @padding-horizontal;
+  font-size: @font-size;
+  border-radius: @border-radius;
+}
+
+.button-color(@color; @background; @border) {
+  color: @color;
+  border-color: @border; // a inside Button which only work in Chrome
+
+  & when not(@background =null) {
+    background: @background;
+  }
+
+  // http://stackoverflow.com/a/17253457
+  >a:only-child {
+    color: currentcolor;
+
+    &::after {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: transparent;
+      content: '';
+    }
+  }
+}
+
+.button-disabled(@color; @background; @border) {
+  &[disabled] {
+
+    &,
+    &:hover,
+    &:focus,
+    &:active {
+      .button-color(@color; @background; @border);
+      text-shadow: none;
+      box-shadow: none;
+    }
+  }
+}
+
+
+// Base styles of buttons
+// --------------------------------------------------
+.btn() {
+  position: relative;
+  font-weight: @btn-font-weight;
+  white-space: nowrap;
+  text-align: center;
+  background-image: none;
+  border: @btn-border-width @btn-border-style transparent;
+  cursor: pointer;
+  transition: all 0.3s @ease-in-out;
+  user-select: none;
+  touch-action: manipulation;
+  .button-size(@btn-height-base; @btn-padding-horizontal-base; @font-size-base; @btn-border-radius );
+  line-height: @btn-line-height;
+
+  // > .@{iconfont-css-prefix} {
+  //   line-height: 1;
+  // }
+
+  &,
+  &:active,
+  &:focus {
+    outline: 0;
+  }
+
+  &:not([disabled]):hover {
+    text-decoration: none;
+  }
+
+  &:not([disabled]):active {
+    outline: 0;
+    box-shadow: none;
+  }
+
+  &[disabled] {
+    cursor: not-allowed;
+
+    >* {
+      pointer-events: none;
+    }
+  }
+
+  &-lg {
+    .button-size(@btn-height-lg; @btn-padding-horizontal-lg; @btn-font-size-lg; @btn-border-radius );
+    line-height: @btn-line-height-lg
+  }
+
+  &-sm {
+    .button-size(@btn-height-sm; @btn-padding-horizontal-sm; @btn-font-size-sm; @btn-border-radius );
+    line-height: @btn-line-height-sm;
+  }
+}
+
+
+// primary button style
+.btn-primary() {
+  .button-color(@btn-primary-color, @btn-primary-bg, @btn-primary-bg);
+
+  &:hover {
+    background: @btn-primary-hover-bg;
+    border-color: @btn-primary-hover-bg;
+  }
+
+  &:active {
+    background: @btn-primary-active-bg;
+    border-color: @btn-primary-active-bg;
+  }
+
+  .button-disabled(@btn-primary-disable-color, @btn-primary-disable-bg, @btn-primary-disable-bg);
+}
+
+// secondary button style
+.btn-secondary() {
+  .button-color(@btn-secondary-color, @btn-secondary-bg, @btn-secondary-border-color);
+
+  &:hover {
+    color: @btn-secondary-hover-color;
+    border-color: @btn-secondary-hover-border-color;
+  }
+
+  &:active {
+    color: @btn-secondary-active-color;
+    border-color: @btn-secondary-active-border-color;
+  }
+
+  .button-disabled(@btn-secondary-disable-color, @btn-secondary-disable-bg, @btn-secondary-disable-border-color);
+}
+
+// outline button style
+.btn-outline() {
+  .button-color(@btn-outline-color, @btn-outline-bg, @btn-outline-border-color);
+
+  &:hover {
+    color: @btn-outline-hover-color;
+    border-color: @btn-outline-hover-border-color;
+  }
+
+  &:active {
+    color: @btn-outline-active-color;
+    border-color: @btn-outline-active-border-color;
+  }
+
+  .button-disabled(@btn-outline-disable-color, @btn-outline-disable-bg, @btn-outline-border-color);
+}
+
+// dashed button style
+// .btn-dashed() {
+//   .button-variant-other(@btn-default-color, @btn-default-bg, @btn-default-border);
+//   border-style: dashed;
+// }
+
+// danger button style
+.btn-danger() {
+  .button-color(@btn-danger-color; @btn-danger-bg; @background);
+  // .button-disabled();
+}
+
+
+.btn-primary-success() {
+  .button-color(@white, @green-base, @green-base);
+
+  &:hover {
+    background: @green-5;
+    border-color: @green-5;
+  }
+
+  &:active {
+    background: @green-7;
+    border-color: @green-7;
+  }
+
+  .button-disabled(@white, @green-3, @green-3);
+}
+
+
+.btn-primary-warning() {
+  .button-color(@white, @yellow-base, @yellow-base);
+
+  &:hover {
+    background: @yellow-5;
+    border-color: @yellow-5;
+  }
+
+  &:active {
+    background: @yellow-7;
+    border-color: @yellow-7;
+  }
+
+  .button-disabled(@white, @yellow-3, @yellow-3);
+}
+
+.btn-primary-error() {
+  .button-color(@white, @red-base, @red-base);
+
+  &:hover {
+    background: @red-5;
+    border-color: @red-5;
+  }
+
+  &:active {
+    background: @red-7;
+    border-color: @red-7;
+  }
+
+  .button-disabled(@white, @red-3, @red-3);
+}
+
+.btn-secondary-success() {
+  .button-color(@green-base, @white, @green-base);
+
+  &:hover {
+    color: @green-5;
+    border-color: @green-5;
+  }
+
+  &:active {
+    color: @green-7;
+    border-color: @green-7;
+  }
+
+  .button-disabled(@green-3, @white, @green-3);
+}
+
+.btn-secondary-warning() {
+  .button-color(@yellow-base, @white, @yellow-base);
+
+  &:hover {
+    color: @yellow-5;
+    border-color: @yellow-5;
+  }
+
+  &:active {
+    color: @yellow-7;
+    border-color: @yellow-7;
+  }
+
+  .button-disabled(@yellow-3, @white, @yellow-3);
+}
+
+
+.btn-secondary-error(){
+  .button-color(@red-base, @white, @red-base);
+
+  &:hover {
+    color: @red-5;
+    border-color: @red-5;
+  }
+
+  &:active {
+    color: @red-7;
+    border-color: @red-7;
+  }
+
+  .button-disabled(@red-3, @white, @red-3);
+}

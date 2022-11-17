@@ -1,0 +1,386 @@
+@import "../colors/index.less";
+@import '../core/index';
+
+@theme: default; // 主题名 
+@ag-prefix: ag; // 前缀
+@iconfont-css-prefix:if;
+
+// -------- Colors -----------
+// >>> Primary
+@primary-color: @blue-6;
+@primary-color-hover: @blue-5;
+@primary-color-active: @blue-7;
+// @primary-color-outline: ;
+@processing-color: @blue-6;
+
+// >>> Info
+@info-color: @primary-color;
+// @info-color-deprecated-bg: color(~`colorPalette('@{info-color}', 1) `);
+// @info-color-deprecated-border: color(~`colorPalette('@{info-color}', 3) `);
+
+// >>> Success
+@success-color: @green-6;
+@success-color-hover: @green-5;
+@success-color-active: @green-7;
+// @success-color-outline: fade(@success-color, @outline-fade);
+// @success-color-deprecated-bg: color(~`colorPalette('@{success-color}', 1) `);
+// @success-color-deprecated-border: color(~`colorPalette('@{success-color}', 3) `);
+
+// >>> Warning
+@warning-color: @yellow-6;
+@warning-color-hover: @yellow-5;
+@warning-color-active: @yellow-7;
+// @warning-color-outline: fade(@warning-color, @outline-fade);
+// @warning-color-deprecated-bg: color(~`colorPalette('@{warning-color}', 1) `);
+// @warning-color-deprecated-border: color(~`colorPalette('@{warning-color}', 3) `);
+
+// >>> Error
+@error-color: @red-6;
+@error-color-hover: @red-5;
+@error-color-active: @red-7;
+// @error-color-outline: fade(@error-color, @outline-fade);
+// @error-color-deprecated-bg: color(~`colorPalette('@{error-color}', 1) `);
+// @error-color-deprecated-border: color(~`colorPalette('@{error-color}', 3) `);
+
+// @highlight-color: @red-5;
+// @normal-color: #d9d9d9;
+@white: #fff;
+@black: #000;
+
+// Base Scaffolding Variables
+@font-family: PingFangSC-Regular, PingFang SC, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+  'Noto Sans', sans-serif;
+@code-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+@text-color: @neutral-7;
+@text-color-secondary: @neutral-6;
+@icon-color: inherit;
+@icon-color-hover: @neutral-7;
+@font-size-base: 14px;
+@font-size-lg: @font-size-base + 2px;
+@font-size-sm: @font-size-base - 2px;
+@line-height-base: 1.5715;
+@border-radius-base: 4px;
+@font-variant-base: tabular-nums;
+@body-background: @white;
+@font-feature-settings-base: 'tnum';
+@heading-color: fade(@black, 85%);
+
+// Media queries breakpoints
+// @screen-xs and @screen-xs-min is not used in Grid
+// smallest break point is @screen-md
+@screen-xs: 480px;
+@screen-xs-min: @screen-xs;
+// 👆 Extra small screen / phone
+
+// 👇 Small screen / tablet
+@screen-sm: 576px;
+@screen-sm-min: @screen-sm;
+
+// Medium screen / desktop
+@screen-md: 768px;
+@screen-md-min: @screen-md;
+
+// Large screen / wide desktop
+@screen-lg: 992px;
+@screen-lg-min: @screen-lg;
+
+// Extra large screen / full hd
+@screen-xl: 1200px;
+@screen-xl-min: @screen-xl;
+
+// Extra extra large screen / large desktop
+@screen-xxl: 1600px;
+@screen-xxl-min: @screen-xxl;
+
+// provide a maximum
+@screen-xs-max: (@screen-sm-min - 1px);
+@screen-sm-max: (@screen-md-min - 1px);
+@screen-md-max: (@screen-lg-min - 1px);
+@screen-lg-max: (@screen-xl-min - 1px);
+@screen-xl-max: (@screen-xxl-min - 1px);
+
+// vertical paddings
+@padding-lg: 24px; // containers
+@padding-md: 16px; // small containers and buttons
+@padding-sm: 12px; // Form controls and items
+@padding-xs: 8px; // small items
+@padding-xss: 4px; // more small
+
+// vertical margins
+@margin-lg: 24px; // containers
+@margin-md: 16px; // small containers and buttons
+@margin-sm: 12px; // Form controls and items
+@margin-xs: 8px; // small items
+@margin-xss: 4px; // more small
+
+// height rules
+@height-base: 32px;
+@height-lg: 40px;
+@height-sm: 24px;
+
+// Disabled states
+@disabled-color: fade(#000, 25%);
+@disabled-bg: @white;
+@disabled-active-bg: tint(@black, 90%);
+@disabled-color-dark: fade(#fff, 35%);
+
+// Border color
+@border-color-base: hsv(0, 0, 85%); // base border outline a component
+@border-color-split: hsv(0, 0, 94%); // split border inside a component
+@border-color-inverse: @white;
+@border-width-base: 1px; // width of the border for a component
+@border-style-base: solid; // style of a components border
+
+// Animation
+@ease-base-out: cubic-bezier(0.7, 0.3, 0.1, 1);
+@ease-base-in: cubic-bezier(0.9, 0, 0.3, 0.7);
+@ease-out: cubic-bezier(0.215, 0.61, 0.355, 1);
+@ease-in: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+@ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
+@ease-out-back: cubic-bezier(0.12, 0.4, 0.29, 1.46);
+@ease-in-back: cubic-bezier(0.71, -0.46, 0.88, 0.6);
+@ease-in-out-back: cubic-bezier(0.71, -0.46, 0.29, 1.46);
+@ease-out-circ: cubic-bezier(0.08, 0.82, 0.17, 1);
+@ease-in-circ: cubic-bezier(0.6, 0.04, 0.98, 0.34);
+@ease-in-out-circ: cubic-bezier(0.78, 0.14, 0.15, 0.86);
+@ease-out-quint: cubic-bezier(0.23, 1, 0.32, 1);
+@ease-in-quint: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+@ease-in-out-quint: cubic-bezier(0.86, 0, 0.07, 1);
+@animation-duration-slow: 0.3s; // Modal
+@animation-duration-base: 0.2s;
+@animation-duration-fast: 0.1s; // Tooltip
+// Motion
+// ---
+@wave-animation-width: 6px;
+
+// Shadow
+@shadow-color: #D9DBE0;
+// @shadow-color-inverse: @component-background;
+@shadow-1: 0px 5px 20px -4px #D9DBE0;
+@shadow-2: -4px 0px 12px 0px #E3E7EC;
+@shadow-3: 4px 0px 12px 0px #E3E7EC;
+@box-shadow-base: @shadow-1;
+
+// z-index list, order by `z-index`
+@zindex-badge: auto;
+@zindex-table-fixed: 2;
+@zindex-affix: 10;
+@zindex-back-top: 10;
+@zindex-picker-panel: 10;
+@zindex-popup-close: 10;
+@zindex-modal: 1000;
+@zindex-modal-mask: 1000;
+@zindex-message: 1010;
+@zindex-notification: 1010;
+@zindex-popover: 1030;
+@zindex-dropdown: 1050;
+@zindex-picker: 1050;
+@zindex-popoconfirm: 1060;
+@zindex-tooltip: 1070;
+@zindex-image: 1080;
+
+
+// Buttons
+@btn-font-weight: 400;
+@btn-border-radius: 4px;
+@btn-border-width: @border-width-base;
+@btn-border-style: @border-style-base;
+@btn-shadow: 0 2px 0 rgba(0, 0, 0, 0.015);
+@btn-primary-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
+@btn-text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
+// @btn-disable-color: @disabled-color;
+// @btn-disable-bg: @disabled-bg;
+// @btn-disable-border: @border-color-base;
+
+
+// primary
+@btn-primary-color: @white;
+@btn-primary-bg: @primary-color;
+@btn-primary-hover-bg: @blue-5;
+@btn-primary-active-bg: @blue-7;
+@btn-primary-disable-color: @white;
+@btn-primary-disable-bg: @blue-3;
+
+// secondary
+@btn-secondary-color: @neutral-7;
+@btn-secondary-bg: @white;
+@btn-secondary-border-color: @neutral-4;
+@btn-secondary-hover-color: @blue-base;
+@btn-secondary-hover-border-color: @blue-base;
+@btn-secondary-active-color: @blue-7;
+@btn-secondary-active-border-color: @blue-7;
+@btn-secondary-disable-color: @neutral-5;
+@btn-secondary-disable-bg: @neutral-2;
+@btn-secondary-disable-border-color: @neutral-4;
+
+// outline 
+@btn-outline-color: @blue-base;
+@btn-outline-bg: @white;
+@btn-outline-border-color: @blue-base;
+@btn-outline-hover-color: @blue-5;
+@btn-outline-hover-border-color: @blue-5;
+@btn-outline-active-color: @blue-7;
+@btn-outline-active-border-color: @blue-7;
+@btn-outline-disable-color: @blue-3;
+@btn-outline-disable-bg: @white;
+@btn-outline-disable-border-color: @blue-3;
+
+@btn-padding-horizontal-base: 32px;
+@btn-height-base: @height-base;
+@btn-line-height: 1.0;
+
+// sm 
+@btn-font-size-sm: @font-size-base;
+@btn-padding-horizontal-sm: @padding-sm;
+@btn-height-sm: @height-sm;
+@btn-line-height-sm: @btn-line-height;
+
+// middle
+@btn-font-size-md: @font-size-base;
+@btn-padding-horizontal-md: @btn-padding-horizontal-base;
+@btn-height-md: @btn-height-base;
+@btn-line-height-md: @btn-line-height;
+
+// lg 
+@btn-font-size-lg: @font-size-base;
+@btn-padding-horizontal-lg: 38px;
+@btn-height-lg: @height-lg;
+@btn-line-height-lg: @btn-line-height;
+
+// @btn-default-color: @text-color;
+// @btn-default-bg: @white;
+// @btn-default-border: @border-color-base;
+
+@btn-danger-color: #fff;
+@btn-danger-bg: @error-color;
+@btn-danger-border: @error-color;
+
+
+// @btn-circle-size: @btn-height-base;
+// @btn-circle-size-lg: @btn-height-lg;
+// @btn-circle-size-sm: @btn-height-sm;
+
+// @btn-square-size: @btn-height-base;
+// @btn-square-size-lg: @btn-height-lg;
+// @btn-square-size-sm: @btn-height-sm;
+// @btn-square-only-icon-size: @font-size-base + 2px;
+// @btn-square-only-icon-size-sm: @font-size-base;
+// @btn-square-only-icon-size-lg: @btn-font-size-lg + 2px;
+
+
+// Alert
+@alert-padding-vertical: 9px;
+@alert-padding-horizontal: 24px;
+@alert-message-color: @neutral-7;
+@alert-close-color: @blue-base;
+
+// success
+@alert-success-bg-color: @green-1;
+@alert-success-border-color: @green-1;
+@alert-success-icon-color: @green-base;
+
+// info 
+@alert-info-bg-color: @blue-1;
+@alert-info-border-color: @blue-1;
+@alert-info-icon-color: @blue-base;
+
+// warning
+@alert-warning-bg-color: @yellow-1;
+@alert-warning-border-color: @yellow-1;
+@alert-warning-icon-color: @yellow-base;
+
+// error
+@alert-error-bg-color: @red-1;
+@alert-error-border-color: @red-1;
+@alert-error-icon-color: @red-base;
+
+
+
+// Message 
+@message-notice-content-padding: 9px 32px;
+@message-notice-content-bg: @white;
+
+
+// Avatar
+// ---
+@avatar-size-base: 32px;
+@avatar-size-lg: 40px;
+@avatar-size-sm: 24px;
+@avatar-font-size-base: 18px;
+@avatar-font-size-lg: 24px;
+@avatar-font-size-sm: 14px;
+@avatar-bg: #ccc;
+@avatar-color: #fff;
+@avatar-border-radius: @border-radius-base;
+// @avatar-group-overlapping: -8px;
+// @avatar-group-space: 3px;
+// @avatar-group-border-color: #fff;
+
+
+// Badge
+// ---
+@badge-height: 20px;
+@badge-height-sm: 14px;
+@badge-dot-size: 6px;
+@badge-dot-size-sm: 4px;
+@badge-font-size: @font-size-sm;
+@badge-font-size-sm: @font-size-sm;
+@badge-font-weight: normal;
+// @badge-status-size: 6px;
+@badge-text-color: @white;
+@badge-color: @red-base;
+
+
+
+// Tooltip
+// ---- 
+// Tooltip max width
+@tooltip-max-width: 250px;
+// Tooltip text color
+@tooltip-color:@white;
+// Tooltip background color
+@tooltip-bg: @neutral-8;
+// Tooltip arrow width
+@tooltip-arrow-width: 6px * sqrt(2);
+// Tooltip distance with trigger
+@tooltip-distance: @tooltip-arrow-width - 3px;
+// Tooltip arrow color
+@tooltip-arrow-color: @neutral-8;
+@tooltip-border-radius: @border-radius-base;
+
+// arrow border
+@arrow-border-radius: 2px;
+
+
+// Notification
+// ---
+@notification-bg: @white;
+@notification-padding-vertical: 16px;
+@notification-padding-horizontal: 24px;
+
+// Modal
+// --
+@modal-header-padding-vertical: @padding-md;
+@modal-header-padding-horizontal: @padding-lg;
+@modal-body-padding: @padding-lg;
+@modal-header-bg: @white;
+@modal-header-padding: @padding-lg @padding-lg;
+@modal-header-border-width: @border-width-base;
+@modal-header-border-style: @border-style-base;
+@modal-header-title-line-height: 24px;
+@modal-header-title-font-size: @font-size-lg;
+@modal-header-border-color-split: @border-color-split;
+@modal-header-close-size: @modal-header-title-line-height + 2 * @modal-header-padding-vertical;
+@modal-content-bg: @white;
+@modal-heading-color: @neutral-8;
+@modal-close-color: @neutral-6;
+@modal-footer-bg: transparent;
+@modal-footer-border-color-split: @border-color-split;
+@modal-footer-border-style: @border-style-base;
+@modal-footer-padding-vertical: 24px;
+@modal-footer-padding-horizontal: 24px;
+@modal-footer-border-width: @border-width-base;
+@modal-mask-bg: fade(@neutral-8, 60%);
+@modal-confirm-body-padding: 24px;
+@modal-confirm-title-font-size: @font-size-lg;
+@modal-border-radius: 8px;

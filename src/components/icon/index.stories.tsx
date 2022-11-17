@@ -1,23 +1,54 @@
 import React from 'react';
 import { Meta } from '@storybook/react';
-import { Icon } from './index';
+import { IconProps, IconArrowLeft, Icon, IconClose, IconAreaYes, IconAreaInfo, IconAreaError } from './index';
 
 const meta: Meta = {
   title: 'Components/Icon',
   component: Icon,
+  argTypes: {
+    rotate: {
+      control: 'number',
+      defaultValue: 0,
+    },
+    spin: {
+      control: 'boolean',
+      defaultValue: false,
+    },
+    onClick: { action: 'clicked' },
+    color: {
+      control: 'text',
+      defaultValue: 'red',
+    },
+  },
 };
 
-// type DocsProps = {};
-
-export const Docs = () => (
+export const Docs = (props: IconProps) => (
   <>
-    <div>
-      <i
-        className="el-icon-delete"
-        style={{ fontSize: '30px', color: 'red' }}
-      ></i>
-      <Icon name="delete" style={{ fontSize: '20', color: 'red' }}></Icon>
-    </div>
+    <div className="title">test props</div>
+    <section className="wrapper">
+      <div className="item">
+        <IconArrowLeft {...props}></IconArrowLeft>
+      </div>
+    </section>
+    <div className="title">all icons</div>
+    <section className="wrapper">
+      <div className="item">
+        <div>IconAreaYes</div>
+        <IconAreaYes></IconAreaYes>
+      </div>
+      <div className="item">
+        <div>IconAreaInfo</div>
+        <IconAreaInfo></IconAreaInfo>
+      </div>
+      <div className="item">
+        <div>IconAreaError</div>
+        <IconAreaError></IconAreaError>
+      </div>
+      <div className="item">
+        <div>IconClose</div>
+        <IconClose></IconClose>
+      </div>
+    </section>
   </>
 );
 

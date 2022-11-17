@@ -1,0 +1,51 @@
+body {
+  min-width: 600px;
+  height: 100vh;
+  font-family: PingFangSC-Regular, PingFang SC, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+    'Noto Sans', sans-serif;
+  box-sizing: border-box;
+}
+
+.ag-alert+.ag-alert {
+  margin-top: 10px !important;
+}
+
+.title {
+  height: 42px;
+  line-height: 42px;
+  font-size: 22px;
+}
+
+.wrapper {
+  display: flex;
+
+  .item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .item+.item {
+    margin-left: 15px;
+  }
+
+  // 工具类 不需要 .item
+  .inner+.inner {
+    margin-left: 10px;
+  }
+}
+
+.tooltip-demo {
+  overflow: hidden;
+  margin-left: 100px;
+
+  .ag-btn {
+    margin-right: 8px;
+    margin-bottom: 8px;
+    width: 70px;
+    text-align: center;
+    padding: 0;
+    display: inline-block
+  }
+
+}
