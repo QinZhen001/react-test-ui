@@ -15,12 +15,10 @@ module.exports = {
     "storyStoreV7": true
   },
   async viteFinal(config, { configType }) {
+
     // return the customized config
     return mergeConfig(config, {
-      // customize the Vite config here
-      resolve: {
-        alias: { foo: 'bar' },
-      },
+      base: "/react-test-ui",
     });
   },
 };
